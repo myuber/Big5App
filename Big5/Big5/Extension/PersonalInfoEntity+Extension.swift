@@ -9,10 +9,16 @@
 import CoreData
 import SwiftUI
 
+// 41番を参考にcreate関数を実装する
+extension PersonalInfoEntity: Identiabal{}
 extension PersonalInfoEntity {
+    
+    static func create(in managedObjectContext)
+    
     enum sex: Int16 {
         case male              // 男性
-        case female           // 女性
+        case female            // 女性
+        case other             //その他
     }
 }
 
