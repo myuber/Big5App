@@ -26,7 +26,7 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="nickname" optional="YES" attributeType="String"/>
         <attribute name="sex" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="tel" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="tel" optional="YES" attributeType="String"/>
     </entity>
     <elements>
         <element name="PersonalInfoEntity" positionX="-54" positionY="-9" width="128" height="433"/>

@@ -19,13 +19,26 @@ struct PersonalDataInput: View {
     @State var birthday: Date = Date()
     @State var from: String = ""
     @State var job: String = ""
-    @State var explanation: String = ""
     @State var like: String = ""
     @State var dislike: String = ""
     @State var tel: String = ""
     @State var mail: String = ""
+    @State var explanation: String = ""
     
     fileprivate func addNewData() {
+        PersonalInfoEntity.create(in: self.viewContext,
+                                  name: self.name,
+                                  kana: self.kana,
+                                  nickname: self.nickname,
+                                  sex: self.sex,
+                                  birthday: self.birthday,
+                                  from: self.from,
+                                  job: self.job,
+                                  like: self.like,
+                                  dislike: self.dislike,
+                                  tel: self.tel,
+                                  mail: self.mail,
+                                  explanation: self.explanation)
         self.name = ""
     }
     
@@ -148,7 +161,10 @@ struct PersonalDataInput: View {
 }
 
 struct PersonalDataInput_Previews: PreviewProvider {
+    static let context = (UIApplication.shared.delegate as! AppDelegate)
+        .persistentContainer.viewContext
     static var previews: some View {
         PersonalDataInput()
+            .environment(\.managedObjectContext, context)
     }
 }
