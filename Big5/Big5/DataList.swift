@@ -21,11 +21,17 @@ struct DataList: View {
     var personalDataList: FetchedResults<PersonalInfoEntity>
     
     var body: some View {
-        List {
-            ForEach(personalDataList) { data in
-                Text(data.name ?? "未設定")
+        NavigationView {
+            List {
+                ForEach(personalDataList) { data in
+                    HStack {
+                        Text(data.name ?? "未設定")
+                        Text(data.tel ?? "未設定")
+                        
+                    }
+                }
             }
-        }
+        }.navigationBarTitle("一覧表示")
     }
 }
 
