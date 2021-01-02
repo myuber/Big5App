@@ -151,7 +151,22 @@ struct PersonalDataInput: View {
                 }
             }.navigationBarTitle("情報の追加")
             .navigationBarItems(trailing: Button(action: {
-                // 63番を参考にcreate関数を実装する
+                // 新しいEntityデータを作成する
+                PersonalInfoEntity.create(in: self.viewContext,
+                                          name: self.name,
+                                          kana: self.kana,
+                                          nickname: self.nickname,
+                                          sex: self.sex,
+                                          birthday: self.birthday,
+                                          from: self.from,
+                                          job: self.job,
+                                          like: self.like,
+                                          dislike: self.dislike,
+                                          tel: self.tel,
+                                          mail: self.mail,
+                                          explanation: self.explanation)
+                // 保存処理
+                self.save()
             }){
                 Text("追加")
             })

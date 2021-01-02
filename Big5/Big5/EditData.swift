@@ -30,10 +30,15 @@ struct EditData: View {
     var body: some View {
         NavigationView {
             Form {
-                HStack {
-                    Spacer()
-                    Image("image01").resizable().frame(width: 100, height: 100)
-                    Spacer()
+                VStack {
+                    HStack {
+                        Spacer()
+                        Image("image01").resizable().frame(width: 100, height: 100)
+                        Spacer()
+                    }
+                    NavigationLink(destination: big5Edit(personalData: personalData)){
+                        Text("BIG5を編集する")
+                    }
                 }
                 //----------- 基本情報 -----------
                 Section(header: Text("基本情報")){
