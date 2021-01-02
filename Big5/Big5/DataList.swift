@@ -24,10 +24,11 @@ struct DataList: View {
         NavigationView {
             List {
                 ForEach(personalDataList) { data in
-                    HStack {
-                        Text(data.name ?? "未設定")
-                        Text(data.tel ?? "未設定")
-                        
+                    NavigationLink(destination: EditData(personalData: data)) {
+                        HStack {
+                            Text(data.name ?? "未設定")
+                            Text(data.tel ?? "未設定")
+                        }
                     }
                 }
             }

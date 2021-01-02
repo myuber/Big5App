@@ -123,7 +123,7 @@ struct EditData: View {
                 }
             }.navigationBarTitle("情報の編集")
             .navigationBarItems(trailing: Button(action: {
-                // 63番を参考にcreate関数を実装する
+                self.save()
             }){
                 Text("保存")
             })

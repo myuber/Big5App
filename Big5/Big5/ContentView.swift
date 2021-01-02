@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -17,6 +18,7 @@ struct ContentView: View {
                 }
                 NavigationLink(destination: DataList()) {
                         Text("一覧")
+                }
                 }
             }
         }
