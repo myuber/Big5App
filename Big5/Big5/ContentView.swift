@@ -13,7 +13,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                NavigationLink(destination: PersonalDataInput()) {
+                NavigationLink(destination: NewData()) {
                         Text("インプット")
                 }
                 NavigationLink(destination: DataList()) {

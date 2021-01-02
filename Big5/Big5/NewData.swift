@@ -2,8 +2,8 @@
 //  NewData.swift
 //  Big5
 //
-//  Created by がり on 2020/12/27.
-//  Copyright © 2020 がり. All rights reserved.
+//  Created by がり on 2021/01/03.
+//  Copyright © 2021 がり. All rights reserved.
 //
 
 import SwiftUI
