@@ -9,8 +9,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     var body: some View {
-        PersonalDataInput()
+        NavigationView {
+            VStack {
+                NavigationLink(destination: PersonalDataInput()) {
+                        Text("インプット")
+                }
+                NavigationLink(destination: DataList()) {
+                        Text("一覧")
+                }
+                }
+            }
+        }
     }
 }
 
