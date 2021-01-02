@@ -12,7 +12,11 @@ struct EditData: View {
     @ObservedObject var personalData: PersonalInfoEntity
     // 保存処理に必要なコンテキスト
     @Environment(\.managedObjectContext) var viewContext
-
+    
+    // Big5Editを表示するSheet判定用の変数
+    @State var showBig5EditSheet = false
+    
+    
     fileprivate func delete() {
         viewContext.delete(personalData)
         save()
@@ -36,9 +40,15 @@ struct EditData: View {
                         Image("image01").resizable().frame(width: 100, height: 100)
                         Spacer()
                     }
-                    NavigationLink(destination: big5Edit(personalData: personalData)){
-                        Text("BIG5を編集する")
+                    Button(action: {
+                        self.showBig5EditSheet = true
+                    }){
+                        Image(systemName: "plus")
+                    }.sheet(isPresented: $showBig5EditSheet) {
+                        big5Edit(personalData: self.personalData)
+                            .environment(\.managedObjectContext, self.viewContext)
                     }
+                    
                 }
                 //----------- 基本情報 -----------
                 Section(header: Text("基本情報")){

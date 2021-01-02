@@ -10,8 +10,8 @@
 		3BD2C949A04056F924290B4F /* Pods_Big5.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAAD7D612D7E72BFF975A28A /* Pods_Big5.framework */; };
 		464C0F04259B201900917D66 /* EditData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464C0F03259B201900917D66 /* EditData.swift */; };
 		464C0F06259D766700917D66 /* Binding+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464C0F05259D766700917D66 /* Binding+Extension.swift */; };
-		464C0F08259E1ABD00917D66 /* big5Edit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464C0F07259E1ABD00917D66 /* big5Edit.swift */; };
 		464C114925A1311500917D66 /* NewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464C114825A1311500917D66 /* NewData.swift */; };
+		464C114B25A132BE00917D66 /* big5Edit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464C114A25A132BE00917D66 /* big5Edit.swift */; };
 		46B0C6672593FB0D000CE822 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B0C6662593FB0D000CE822 /* AppDelegate.swift */; };
 		46B0C6692593FB0D000CE822 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B0C6682593FB0D000CE822 /* SceneDelegate.swift */; };
 		46B0C66C2593FB0D000CE822 /* Big5.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 46B0C66A2593FB0D000CE822 /* Big5.xcdatamodeld */; };
@@ -64,7 +64,6 @@
 /* Begin PBXFileReference section */
 		464C0F03259B201900917D66 /* EditData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditData.swift; sourceTree = "<group>"; };
 		464C0F05259D766700917D66 /* Binding+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+Extension.swift"; sourceTree = "<group>"; };
-		464C0F07259E1ABD00917D66 /* big5Edit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = big5Edit.swift; sourceTree = "<group>"; };
 		464C0F1525A0A2E400917D66 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		464C0F1725A0A2E400917D66 /* Charts.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; path = Charts.xcworkspace; sourceTree = "<group>"; };
 		464C0F1825A0A2E400917D66 /* Cartfile.resolved */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile.resolved; sourceTree = "<group>"; };
@@ -503,6 +502,7 @@
 		464C110A25A0A2E400917D66 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		464C113C25A0AE2D00917D66 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		464C114825A1311500917D66 /* NewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewData.swift; sourceTree = "<group>"; };
+		464C114A25A132BE00917D66 /* big5Edit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = big5Edit.swift; sourceTree = "<group>"; };
 		46B0C6632593FB0D000CE822 /* Big5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Big5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46B0C6662593FB0D000CE822 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46B0C6682593FB0D000CE822 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -1463,7 +1463,7 @@
 				464C0F03259B201900917D66 /* EditData.swift */,
 				464C114825A1311500917D66 /* NewData.swift */,
 				46B0C683259ACC35000CE822 /* DataList.swift */,
-				464C0F07259E1ABD00917D66 /* big5Edit.swift */,
+				464C114A25A132BE00917D66 /* big5Edit.swift */,
 				46B0C66F2593FB11000CE822 /* Assets.xcassets */,
 				46B0C6742593FB11000CE822 /* LaunchScreen.storyboard */,
 				46B0C6772593FB11000CE822 /* Info.plist */,
@@ -1679,7 +1679,7 @@
 				464C0F06259D766700917D66 /* Binding+Extension.swift in Sources */,
 				46B0C67E2598B501000CE822 /* PersonalInfoEntity+Extension.swift in Sources */,
 				46B0C684259ACC35000CE822 /* DataList.swift in Sources */,
-				464C0F08259E1ABD00917D66 /* big5Edit.swift in Sources */,
+				464C114B25A132BE00917D66 /* big5Edit.swift in Sources */,
 				46B0C6692593FB0D000CE822 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
