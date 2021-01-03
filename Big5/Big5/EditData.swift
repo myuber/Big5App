@@ -41,25 +41,29 @@ struct EditData: View {
                         Image("image01").resizable().frame(width: 100, height: 100)
                         Spacer()
                     }
-                    Button(action: {
-                        self.showBig5EditSheet = true
-                    }){
-                        Image(systemName: "plus")
-                    }.sheet(isPresented: $showBig5EditSheet) {
-                        big5Edit(personalData: self.personalData)
-                            .environment(\.managedObjectContext, self.viewContext)
-                    }
-                    
-                    ChartView(entries: [
-                        RadarChartDataEntry(value: Double(personalData.big5Agree)),
-                        RadarChartDataEntry(value: Double(personalData.big5Extra)),
-                        RadarChartDataEntry(value: Double(personalData.big5Open)),
-                        RadarChartDataEntry(value: Double(personalData.big5Conscien)),
-                        RadarChartDataEntry(value: Double(personalData.big5Neuro))
-                    ])
-                        .frame(width: 250, height: 250)
-                    
                 }
+                Section {
+                    HStack {
+                        Spacer()
+                        ChartView(entries: [
+                            RadarChartDataEntry(value: Double(personalData.big5Agree)),
+                            RadarChartDataEntry(value: Double(personalData.big5Extra)),
+                            RadarChartDataEntry(value: Double(personalData.big5Open)),
+                            RadarChartDataEntry(value: Double(personalData.big5Conscien)),
+                            RadarChartDataEntry(value: Double(personalData.big5Neuro))
+                        ])
+                            .frame(width: 250, height: 250)
+                            .onTapGesture {
+                                self.showBig5EditSheet = true
+                            }.sheet(isPresented: $showBig5EditSheet) {
+                                big5Edit(personalData: self.personalData)
+                                .environment(\.managedObjectContext, self.viewContext)
+                        }
+                        Spacer()
+                    }
+                }
+                    
+                
                 //----------- 基本情報 -----------
                 Section(header: Text("基本情報")){
                     HStack {

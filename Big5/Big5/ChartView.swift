@@ -20,6 +20,10 @@ struct ChartView : UIViewRepresentable {
         
         // 凡例を非表示
         chart.legend.enabled = false
+        // TapGestureを無効化
+        chart.highlightPerTapEnabled = false
+        // チャートの回転を無効化
+        chart.rotationEnabled = false
         
         // X軸を設定
         let xAxis = chart.xAxis
