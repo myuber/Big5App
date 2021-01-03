@@ -20,6 +20,13 @@ struct big5Edit: View {
     
     var body: some View {
         VStack {
+            ChartView(entries: [
+                RadarChartDataEntry(value: Double(personalData.big5Agree)),
+                RadarChartDataEntry(value: Double(personalData.big5Extra)),
+                RadarChartDataEntry(value: Double(personalData.big5Open)),
+                RadarChartDataEntry(value: Double(personalData.big5Conscien)),
+                RadarChartDataEntry(value: Double(personalData.big5Neuro))
+            ]).frame(width: 375, height: 375) //375にしておくと、iPhon8でも対応できる
             
             HStack{
                 Stepper(value: $personalData.big5Agree, in: -4...4) {
