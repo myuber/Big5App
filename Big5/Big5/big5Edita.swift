@@ -2,8 +2,8 @@
 //  big5Edit.swift
 //  Big5
 //
-//  Created by がり on 2021/01/03.
-//  Copyright © 2021 がり. All rights reserved.
+//  Created by がり on 2020/12/31.
+//  Copyright © 2020 がり. All rights reserved.
 //
 
 import SwiftUI
@@ -14,19 +14,11 @@ struct big5Edit: View {
     // 保存処理に必要なコンテキスト
     @Environment(\.managedObjectContext) var viewContext
     
-    @Environment(\.presentationMode) var presentationMode
     
     @State var ba:Int16 = 1
     
     var body: some View {
         VStack {
-            ChartView(entries: [
-                RadarChartDataEntry(value: Double(personalData.big5Agree)),
-                RadarChartDataEntry(value: Double(personalData.big5Extra)),
-                RadarChartDataEntry(value: Double(personalData.big5Open)),
-                RadarChartDataEntry(value: Double(personalData.big5Conscien)),
-                RadarChartDataEntry(value: Double(personalData.big5Neuro))
-            ]).frame(width: 375, height: 375) //375にしておくと、iPhon8でも対応できる
             
             HStack{
                 Stepper(value: $personalData.big5Agree, in: -4...4) {
@@ -57,12 +49,6 @@ struct big5Edit: View {
                     Text("神経症的傾向")
                 }
                 Text(String(personalData.big5Neuro))
-            }
-            
-            Button(action: {
-                self.presentationMode.wrappedValue.dismiss()
-            }){
-                Text("保存")
             }
         }
     }

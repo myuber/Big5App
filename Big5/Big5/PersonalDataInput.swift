@@ -1,5 +1,5 @@
 //
-//  PersonalDataInput.swift
+//  NewData.swift
 //  Big5
 //
 //  Created by がり on 2020/12/27.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct PersonalDataInput: View {
+struct NewData: View {
     // 保存処理に必要なコンテキスト
     @Environment(\.managedObjectContext) var viewContext
     
@@ -151,7 +151,22 @@ struct PersonalDataInput: View {
                 }
             }.navigationBarTitle("情報の追加")
             .navigationBarItems(trailing: Button(action: {
-                // 63番を参考にcreate関数を実装する
+                // 新しいEntityデータを作成する
+                PersonalInfoEntity.create(in: self.viewContext,
+                                          name: self.name,
+                                          kana: self.kana,
+                                          nickname: self.nickname,
+                                          sex: self.sex,
+                                          birthday: self.birthday,
+                                          from: self.from,
+                                          job: self.job,
+                                          like: self.like,
+                                          dislike: self.dislike,
+                                          tel: self.tel,
+                                          mail: self.mail,
+                                          explanation: self.explanation)
+                // 保存処理
+                self.save()
             }){
                 Text("追加")
             })
@@ -160,11 +175,11 @@ struct PersonalDataInput: View {
     }
 }
 
-struct PersonalDataInput_Previews: PreviewProvider {
+struct NewData_Previews: PreviewProvider {
     static let context = (UIApplication.shared.delegate as! AppDelegate)
         .persistentContainer.viewContext
     static var previews: some View {
-        PersonalDataInput()
+        NewData()
             .environment(\.managedObjectContext, context)
     }
 }
