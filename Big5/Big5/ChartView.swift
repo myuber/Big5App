@@ -4,7 +4,10 @@
 //
 //  Created by がり on 2021/01/03.
 //  Copyright © 2021 がり. All rights reserved.
-//
+//  ▼ライブラリのGithub
+//  https://github.com/danielgindi/Charts
+
+
 
 import SwiftUI
 import Charts
@@ -44,7 +47,23 @@ struct ChartView : UIViewRepresentable {
     }
     // チャートの入力データが変更された場合のビュー更新を行う
     func updateUIView(_ uiView: RadarChartView, context: Context) {
+
+        // X軸を設定
+        let xAxis = uiView.xAxis
+        xAxis.labelFont = .systemFont(ofSize: 10, weight: .bold)
+        xAxis.xOffset = 5
+        xAxis.yOffset = 5
+        xAxis.valueFormatter = XAxisFormatter()
         
+        // Y軸を設定
+        let yAxis = uiView.yAxis
+        yAxis.axisMaximum = 4
+        yAxis.axisMinimum = -4
+        yAxis.drawTopYLabelEntryEnabled = false
+        yAxis.drawLabelsEnabled = false
+        yAxis.valueFormatter = YAxisFormatter()
+        
+        uiView.data = addData()
     }
     
     func addData() -> RadarChartData {
