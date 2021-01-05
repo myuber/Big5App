@@ -10,52 +10,63 @@ import SwiftUI
 
 struct big5New: View {
     @EnvironmentObject var ObservedClass: ObservedClass
-    let quesList = ["質問1", "質問2", "質問3", "質問4", "質問5", "質問6"]
+    
+    @State private var isActive = false
+    
     var body: some View {
-        ZStack {
-            // NOTE: 画面をレンダリングするかで画面遷移を発生する
-            if ObservedClass.isShowNextView {
-                SubView(questionText: "質問")
-            } else {
-                Button(action: {
-                    withAnimation() {
-                        self.ObservedClass.isShowNextView.toggle()
-                    }
-                }) {
-                    Text("SubViewへ遷移")
+        NavigationView {
+            VStack {
+                Text(ObservedClass.quesList[0])
+                NavigationLink(destination: MidView(questionNum: 1, isFirstViewActive: $isActive), isActive: $isActive) {
+                    Button(action: {
+                        self.isActive = true
+                    }, label: {
+                        Text("Go to MidView")
+                    })
                 }
             }
+        }.navigationBarTitle("First View")
+    }
+}
+
+struct MidView: View {
+    @EnvironmentObject var ObservedClass: ObservedClass
+    
+    let questionNum: Int
+    @State private var isActive = false
+    @Binding var isFirstViewActive: Bool
+    
+    var body: some View {
+        VStack {
+            Text(ObservedClass.quesList[self.questionNum])
+            NavigationLink(destination: EndView(questionNum: 2, isFirstViewActive: $isFirstViewActive), isActive: $isActive){
+                Button(action: {
+                    self.isActive = true
+                }, label: {
+                    Text("Go to MidView")
+                })
+            }
+            .isDetailLink(false)
         }
     }
 }
 
-struct SubView: View {
-    let questionText: String
+
+struct EndView: View {
     @EnvironmentObject var ObservedClass: ObservedClass
     
+    let questionNum: Int
+    @Binding var isFirstViewActive: Bool
+    
     var body: some View {
-        // NOTE: 画面遷移アニメーションは自前で書く
-        GeometryReader { geometory in
-            ZStack {
-                VStack {
-                    Text(self.questionText)
-                    Text(String(self.ObservedClass.isShowNextView))
-                    Button(action: {
-                        withAnimation() {
-                            self.ObservedClass.isShowNextView.toggle()
-                        }
-                    }) {
-                        Text("SubViewへ遷移")
-                    }
-                    
-                }
-            }
-            .frame(width: geometory.size.width,
-                   height: geometory.size.height)
-            .background(Color.green)
-            .animation(.easeInOut(duration: 0.4))
+        VStack {
+            Text(ObservedClass.quesList[self.questionNum])
+            Button(action: {
+                self.isFirstViewActive = false
+            }, label: {
+                Text("Back to FirstView")
+            })
         }
-        .transition(.move(edge: .trailing))
     }
 }
 
