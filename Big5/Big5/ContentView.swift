@@ -19,6 +19,10 @@ struct ContentView: View {
                 NavigationLink(destination: DataList()) {
                         Text("一覧")
                 }
+                
+                NavigationLink(destination: big5New()) {
+                        Text("ビッグ5")
+                }
             }
         }
     }
