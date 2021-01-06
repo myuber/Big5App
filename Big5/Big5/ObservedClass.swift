@@ -9,5 +9,5 @@
 import SwiftUI
 
 class ObservedClass: ObservableObject {
-    @Published var isShowNextView: Bool = false
+     @Published var quesList = ["質問1", "質問2", "質問3", "質問4", "質問5", "質問6"]
 }
