@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/gari/pyworks/Big5App/Big5/Big5/Big5SlideView.swift">
+   </FileRef>
+   <FileRef
       location = "group:Big5.xcodeproj">
    </FileRef>
    <FileRef

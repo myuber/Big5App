@@ -10,4 +10,5 @@ import SwiftUI
 
 class ObservedClass: ObservableObject {
      @Published var quesList = ["質問1", "質問2", "質問3", "質問4", "質問5", "質問6"]
+     @Published var quesNum = 0
 }
