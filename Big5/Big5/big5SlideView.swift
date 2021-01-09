@@ -34,6 +34,7 @@ struct big5SlideView: View {
                                 .opacity(0.7)
                             
                             Text(self.ObservedClass.quesList[num])
+                                .frame(width: CGFloat.cardWidth - 90, height: CGFloat.cardHeight - 290)
                         } //:ZStack
                     } //:ForEach
                     
