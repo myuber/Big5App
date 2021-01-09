@@ -18,6 +18,7 @@
 		464C115B25A5F11E00917D66 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464C115A25A5F11E00917D66 /* Color+Extension.swift */; };
 		464C116325A899D100917D66 /* big5SlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464C116225A899D100917D66 /* big5SlideView.swift */; };
 		464C116525A8A42100917D66 /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464C116425A8A42100917D66 /* CGFloat+Extension.swift */; };
+		464C116725A9831100917D66 /* TopLeftShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464C116625A9831000917D66 /* TopLeftShape.swift */; };
 		46B0C6672593FB0D000CE822 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B0C6662593FB0D000CE822 /* AppDelegate.swift */; };
 		46B0C6692593FB0D000CE822 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B0C6682593FB0D000CE822 /* SceneDelegate.swift */; };
 		46B0C66C2593FB0D000CE822 /* Big5.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 46B0C66A2593FB0D000CE822 /* Big5.xcdatamodeld */; };
@@ -515,6 +516,7 @@
 		464C115A25A5F11E00917D66 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		464C116225A899D100917D66 /* big5SlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = big5SlideView.swift; path = /Users/gari/pyworks/Big5App/Big5/Big5/big5SlideView.swift; sourceTree = "<absolute>"; };
 		464C116425A8A42100917D66 /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
+		464C116625A9831000917D66 /* TopLeftShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopLeftShape.swift; sourceTree = "<group>"; };
 		46B0C6632593FB0D000CE822 /* Big5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Big5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46B0C6662593FB0D000CE822 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		46B0C6682593FB0D000CE822 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -1479,6 +1481,7 @@
 				464C115625A3CFA900917D66 /* big5New.swift */,
 				464C116225A899D100917D66 /* big5SlideView.swift */,
 				464C115825A4A8B300917D66 /* ObservedClass.swift */,
+				464C116625A9831000917D66 /* TopLeftShape.swift */,
 				464C114C25A1E12F00917D66 /* ChartView.swift */,
 				46B0C66F2593FB11000CE822 /* Assets.xcassets */,
 				46B0C6742593FB11000CE822 /* LaunchScreen.storyboard */,
@@ -1702,6 +1705,7 @@
 				464C116525A8A42100917D66 /* CGFloat+Extension.swift in Sources */,
 				464C114D25A1E12F00917D66 /* ChartView.swift in Sources */,
 				46B0C684259ACC35000CE822 /* DataList.swift in Sources */,
+				464C116725A9831100917D66 /* TopLeftShape.swift in Sources */,
 				464C116325A899D100917D66 /* big5SlideView.swift in Sources */,
 				464C114B25A132BE00917D66 /* big5Edit.swift in Sources */,
 				46B0C6692593FB0D000CE822 /* SceneDelegate.swift in Sources */,
