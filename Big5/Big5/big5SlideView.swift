@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct big5SlideView: View {
+    //@ObservedObject var personalData: PersonalInfoEntity
+    // 保存処理に必要なコンテキスト
+    //@Environment(\.managedObjectContext) var viewContext
     
     //@Binding var showSlideMenu: Bool
     @State var showSlideMenu: Bool = false
     @State var showSlideNum: Int = 0
     
-    @EnvironmentObject var ObservedClass: ObservedClass
+    @State var selectQ = ""
+    @EnvironmentObject var observedClass: ObservedClass
     
 // MARK: - Body
     var body: some View {
@@ -24,19 +28,10 @@ struct big5SlideView: View {
 //MARK: - Card
                 HStack(spacing: 50) {
                     
-                    ForEach (0..<10) { num in
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 40)
-                                .fill(Color.white)                // グラデーションを設定
-                                .frame(width: CGFloat.cardWidth - 50, height: CGFloat.cardHeight - 290)      // サイズを指定
-                                
-                                .shadow(color: Color.black.opacity(0.4), radius: 12.5, x: 0, y: 18)     // 影を描画
-                                .opacity(0.7)
-                            
-                            Text(self.ObservedClass.quesList[num])
-                                .frame(width: CGFloat.cardWidth - 90, height: CGFloat.cardHeight - 290)
-                        } //:ZStack
-                    } //:ForEach
+                    // ObservedClassのenumを全て取得して、big5QuesCardで表示
+                    ForEach(ObservedClass.big5Category.allCases, id: \.self) { (category) in
+                        big5QuesCard(QuestionWord: category.Big5Question())
+                    }
                     
                 } //:HStack
                     .offset(x: CGFloat.cardWidth * 4.5)
@@ -44,12 +39,16 @@ struct big5SlideView: View {
                 .animation(showSlideMenu ? Animation.spring().delay(0.1) : Animation.spring().delay(0.5))   //アニメーションを指定（delay/trueのときは早め、falseのときはちょっと遅れて始まる）
             } //:ZStack
             
+            Text(selectQ)
+            
 //MARK: - Button
              HStack{
                // ボタンの表示
-               ForEach (0..<5) { num in
-                   Button(action: {
-                       self.showSlideNum = num
+               ForEach (1..<6) { num in
+                    Button(action: {
+                        if(self.showSlideNum < 9){
+                            self.showSlideNum += 1
+                        }
                    }, label: {
                        Text(String(num))
                            .foregroundColor(Color.white)
@@ -60,14 +59,31 @@ struct big5SlideView: View {
                    .shadow(radius: 3)
                } //:ForEach
             } //:HStack
+            // 戻るボタン
+            Button(action: {
+                if(self.showSlideNum > 0){
+                    self.showSlideNum -= 1
+                }
+            }, label: {
+                Text("戻る")
+                    .foregroundColor(Color.white)
+            }) //:button
+            .frame(width: 100, height: 50)
+            .background(Color.diagonalGradient)
+            .cornerRadius(10)
+            .shadow(radius: 3)
             
         } //:VStack
-        
     } //:body
 } //:view
 
 struct big5SlideView_Previews: PreviewProvider {
+    /*static let context = (UIApplication.shared.delegate as! AppDelegate)
+    .persistentContainer.viewContext*/
+    
     static var previews: some View {
-        big5SlideView()
+        //let newData = PersonalInfoEntity(context: context)
+        return big5SlideView()
+        //.environment(\.managedObjectContext, context)
     }
 }
