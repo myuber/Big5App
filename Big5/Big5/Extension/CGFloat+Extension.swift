@@ -16,6 +16,6 @@ extension UIScreen {
 
 extension CGFloat {
 
-    static let cardWidth = UIScreen.screenWidth
-    static let cardHeight = UIScreen.screenHeight
+    static let cardWidth = UIScreen.screenWidth - 50
+    static let cardHeight = UIScreen.screenHeight - 290
 }

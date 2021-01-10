@@ -20,9 +20,6 @@ struct ContentView: View {
                         Text("一覧")
                 }
                 
-                NavigationLink(destination: big5SlideView()) {
-                        Text("ビッグ5")
-                }
             }
         }
     }

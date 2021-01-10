@@ -16,13 +16,13 @@ struct big5QuesCard: View {
         ZStack {
             RoundedRectangle(cornerRadius: 40)
                 .fill(Color.white)                // グラデーションを設定
-                .frame(width: CGFloat.cardWidth - 50, height: CGFloat.cardHeight - 290)      // サイズを指定
+                .frame(width: CGFloat.cardWidth, height: CGFloat.cardHeight)      // サイズを指定
                 
                 .shadow(color: Color.black.opacity(0.4), radius: 12.5, x: 0, y: 18)     // 影を描画
                 .opacity(0.7)
             
             Text(QuestionWord)
-                .frame(width: CGFloat.cardWidth - 90, height: CGFloat.cardHeight - 290)
+                .frame(width: CGFloat.cardWidth - 20, height: CGFloat.cardHeight)
         } //:ZStack
     }
 }

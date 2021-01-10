@@ -61,6 +61,9 @@ struct EditData: View {
                         }
                         Spacer()
                     }
+                    NavigationLink(destination: big5SlideView(personalData: personalData)){
+                            Text("Big5を登録する")
+                    }
                 }
                     
                 
