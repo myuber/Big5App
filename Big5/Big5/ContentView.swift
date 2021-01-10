@@ -19,6 +19,7 @@ struct ContentView: View {
                 NavigationLink(destination: DataList()) {
                         Text("一覧")
                 }
+                
             }
         }
     }
