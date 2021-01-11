@@ -14,6 +14,9 @@ struct EditData: View {
     // 保存処理に必要なコンテキスト
     @Environment(\.managedObjectContext) var viewContext
     
+    // モーダルViewを閉じるための変数
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     // Big5Editを表示するSheet判定用の変数
     @State var showBig5EditSheet = false
     
@@ -162,10 +165,11 @@ struct EditData: View {
             .navigationBarTitle("情報の編集")
             .navigationBarItems(trailing: Button(action: {
                 self.save()
+                self.presentationMode.wrappedValue.dismiss()
             }){
                 Text("保存")
             })
-                .frame(width: UIScreen.screenWidth) //375にしておくと、iPhon8でも対応できる
+                .frame(width: UIScreen.screenWidth)
             
         } //Navigationview
     } //:body

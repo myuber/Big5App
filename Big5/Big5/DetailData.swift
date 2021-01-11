@@ -42,10 +42,11 @@ struct DetailData: View {
         // DateFormatter のインスタンスを作成
         let formatter: DateFormatter = DateFormatter()
         // ロケールを日本（日本語）に設定
-        formatter.locale = Locale(identifier: "ja_JP")
+        //formatter.locale = Locale(identifier: "ja_JP")
         
         // 文字列に変換して表示
         let strBirthday = formatter.string(from: dt ?? Date())
+        print(strBirthday)
 
         
         return Form {
