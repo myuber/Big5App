@@ -24,7 +24,7 @@ struct DataList: View {
         NavigationView {
             List {
                 ForEach(personalDataList) { data in
-                    NavigationLink(destination: EditData(personalData: data)) {
+                    NavigationLink(destination: DetailData(personalData: data)) {
                         HStack {
                             Text(data.name ?? "未設定")
                             Text(data.tel ?? "未設定")

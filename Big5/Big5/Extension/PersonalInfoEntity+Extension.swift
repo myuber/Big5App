@@ -54,6 +54,17 @@ extension PersonalInfoEntity {
         case male              // 男性
         case female            // 女性
         case other             //その他
+        
+        func ToString() -> String {
+            switch self {
+                case .male:
+                    return "男性"
+                case .female:
+                    return "女性"
+                case .other:
+                    return "その他"
+            }
+        }
     }
 }
 

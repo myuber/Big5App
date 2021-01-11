@@ -62,7 +62,7 @@ struct EditData: View {
                             }.sheet(isPresented: $showBig5EditSheet) {
                                 big5Edit(personalData: self.personalData)
                                 .environment(\.managedObjectContext, self.viewContext)
-                        }
+                            }
                         Spacer()
                     } //:HStack
                     NavigationLink(destination: big5SlideView(personalData: personalData)){
@@ -165,7 +165,7 @@ struct EditData: View {
             }){
                 Text("保存")
             })
-            .frame(width: 375) //375にしておくと、iPhon8でも対応できる
+                .frame(width: UIScreen.screenWidth) //375にしておくと、iPhon8でも対応できる
             
         } //Navigationview
     } //:body

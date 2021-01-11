@@ -15,7 +15,7 @@ struct DetailData: View {
     @Environment(\.managedObjectContext) var viewContext
     
     // Big5Editを表示するSheet判定用の変数
-    @State var showBig5EditSheet = false
+    @State var showEditSheet = false
     
     // 削除処理
     fileprivate func delete() {
@@ -33,143 +33,155 @@ struct DetailData: View {
         }
     }
     
+    
 //MARK: -body
     var body: some View {
-        NavigationView {
-            Form {
+        
+        // 現在日時を dt に代入
+        let dt = personalData.birthday
+        // DateFormatter のインスタンスを作成
+        let formatter: DateFormatter = DateFormatter()
+        // ロケールを日本（日本語）に設定
+        formatter.locale = Locale(identifier: "ja_JP")
+        
+        // 文字列に変換して表示
+        let strBirthday = formatter.string(from: dt ?? Date())
+
+        
+        return Form {
 //MARK: -chart
-                VStack {
-                    HStack {
-                        Spacer()
-                        Image("image01").resizable().frame(width: 100, height: 100)
-                        Spacer()
-                    }
+            VStack {
+                HStack {
+                    Spacer()
+                    Image("image01").resizable().frame(width: 100, height: 100)
+                    Spacer()
+                }
+            }
+            
+            Section {
+                HStack {
+                    Spacer()
+                    ChartView(entries: [
+                        RadarChartDataEntry(value: Double(personalData.big5Agree)),
+                        RadarChartDataEntry(value: Double(personalData.big5Extra)),
+                        RadarChartDataEntry(value: Double(personalData.big5Open)),
+                        RadarChartDataEntry(value: Double(personalData.big5Conscien)),
+                        RadarChartDataEntry(value: Double(personalData.big5Neuro))
+                    ])
+                        .frame(width: 250, height: 250)
+                    Spacer()
+                } //:HStack
+            } //:Section
+                
+           
+//MARK: -基本情報
+            Section(header: Text("基本情報")){
+                HStack {
+                    Text("名前")
+                        .frame(width: 120, alignment: .leading)
+                    Text(personalData.name ?? "no title")
+                }
+                HStack {
+                    Text("フリガナ")
+                        .frame(width: 120, alignment: .leading)
+                    Text(personalData.kana ?? "no title")
+                }
+                HStack {
+                    Text("ニックネーム")
+                        .frame(width: 120, alignment: .leading)
+                    Text(personalData.nickname ?? "no title")
+                }
+                HStack {
+                    Text("性別")
+                        .frame(width: 120, alignment: .leading)
+                    Text(String(personalData.sex))
+                }
+
+                HStack {
+                    Text("誕生日")
+                        .frame(width: 120, alignment: .leading)
+                    Text(strBirthday)
                 }
                 
-                Section {
-                    HStack {
-                        Spacer()
-                        ChartView(entries: [
-                            RadarChartDataEntry(value: Double(personalData.big5Agree)),
-                            RadarChartDataEntry(value: Double(personalData.big5Extra)),
-                            RadarChartDataEntry(value: Double(personalData.big5Open)),
-                            RadarChartDataEntry(value: Double(personalData.big5Conscien)),
-                            RadarChartDataEntry(value: Double(personalData.big5Neuro))
-                        ])
-                            .frame(width: 250, height: 250)
-                            .onTapGesture {
-                                self.showBig5EditSheet = true
-                            }.sheet(isPresented: $showBig5EditSheet) {
-                                big5Edit(personalData: self.personalData)
-                                .environment(\.managedObjectContext, self.viewContext)
-                        }
-                        Spacer()
-                    } //:HStack
-                    NavigationLink(destination: big5SlideView(personalData: personalData)){
-                            Text("Big5を登録する")
-                    } //:NavigationLink
-                } //:Section
-                    
-               
-//MARK: -基本情報
-                Section(header: Text("基本情報")){
-                    HStack {
-                        Text("名前")
-                            .frame(width: 120, alignment: .leading)
-                        TextField("お名前", text: Binding($personalData.name, "new name"))
-                    }
-                    HStack {
-                        Text("フリガナ")
-                            .frame(width: 120, alignment: .leading)
-                        TextField("フリガナ", text: Binding($personalData.kana, "new kana"))
-                    }
-                    HStack {
-                        Text("ニックネーム")
-                            .frame(width: 120, alignment: .leading)
-                        TextField("ニックネーム", text: Binding($personalData.nickname, "new nickname"))
-                    }
-                    HStack {
-                        Text("性別")
-                            .frame(width: 120, alignment: .leading)
-                        Picker(selection: Binding($personalData.sex), label: Text("性別")){
-                            Text("男性").tag(0)
-                            Text("女性").tag(1)
-                            Text("その他").tag(2)
-                        }
-                        .pickerStyle(SegmentedPickerStyle())
-                        .labelsHidden()
-                    }
-                    DatePicker(selection: Binding($personalData.birthday, Date()),
-                               displayedComponents: .date,
-                               label: {Text("誕生日")}
-                    ) // 多分Xcodeをアップデートすれば使えるカレンダー型のピッカー.datePickerStyle(GraphicalDatePickerStyle())
-                    
-                    HStack {
-                        Text("出身地")
-                            .frame(width: 120, alignment: .leading)
-                        TextField("〇〇県〇〇市", text: Binding($personalData.from, "new from"))
-                    }
-                    HStack {
-                        Text("職業")
-                            .frame(width: 120, alignment: .leading)
-                        TextField("会社員", text: Binding($personalData.job, "new job"))
-                    }
-                    HStack {
-                        Text("好きなもの")
-                            .frame(width: 120, alignment: .leading)
-                        TextField("好きなもの", text: Binding($personalData.like, "new like"))
-                    }
-                    HStack {
-                        Text("嫌いなもの")
-                            .frame(width: 120, alignment: .leading)
-                        TextField("嫌いなもの", text: Binding($personalData.dislike, "new dislike"))
-                    }
-                } //:Section
+                HStack {
+                    Text("出身地")
+                        .frame(width: 120, alignment: .leading)
+                    Text(personalData.from ?? "no title")
+                }
+                HStack {
+                    Text("職業")
+                        .frame(width: 120, alignment: .leading)
+                    Text(personalData.job ?? "no title")
+                }
+                HStack {
+                    Text("好きなもの")
+                        .frame(width: 120, alignment: .leading)
+                    Text(personalData.like ?? "no title")
+                }
+                HStack {
+                    Text("嫌いなもの")
+                        .frame(width: 120, alignment: .leading)
+                    Text(personalData.dislike ?? "no title")
+                }
+            } //:Section
 //MARK: -連絡先
-                Section(header: Text("連絡先")) {
-                    HStack {
-                        Text("電話番号")
-                            .frame(width: 120, alignment: .leading)
-                        TextField("000-0000-0000", text: Binding($personalData.tel, "new tel"))
-                            .keyboardType(.phonePad)
-                    }
-                    HStack {
-                        Text("メール")
-                            .frame(width: 120, alignment: .leading)
-                        TextField("xxxxxxxx@xxx.jp", text: Binding($personalData.mail, "new mail"))
-                    }
-                } //:Section
+            Section(header: Text("連絡先")) {
+                HStack {
+                    Text("電話番号")
+                        .frame(width: 120, alignment: .leading)
+                    Text(personalData.tel ?? "no title")
+                }
+                HStack {
+                    Text("メール")
+                        .frame(width: 120, alignment: .leading)
+                    Text(personalData.mail ?? "no title")
+                }
+            } //:Section
 //MARK: -メモ
-                Section(header: Text("追加情報")) {
-                    TextField("最近話したことなどをメモしよう", text: Binding($personalData.explanation, "new explanation"))
-                } //:Section
-//MARK: -登録ボタン
-                HStack(alignment: .center) {
-                    Spacer()
-                    Button(action: {
-                        self.delete()
-                    }){
-                        HStack{
-                            Image(systemName: "minus.circle.fill")
-                            Text("削除")
-                                .font(.headline)
-                        }.foregroundColor(.red)
-                    } //:Button
-                    Spacer()
-                } //:HsStack
+            Section(header: Text("追加情報")) {
+                Text(personalData.explanation ?? "no title")
+            } //:Section
+//MARK: -操作ボタン
+            HStack(alignment: .center) {
+                Spacer()
+                // 編集ボタン
+                ZStack {
+                    Capsule()
+                        .fill(Color.EditGradient)
+                        .frame(width:100, height: 40)
+                    HStack{
+                        Image(systemName: "pencil.circle.fill")
+                        Text("編集").font(.headline)
+                    }.foregroundColor(.white)
+                }.onTapGesture {
+                    self.showEditSheet = true
+                }.sheet(isPresented: $showEditSheet) {
+                    EditData(personalData: self.personalData)
+                    .environment(\.managedObjectContext, self.viewContext)
+                } //:onTapGesture
+                
+                Spacer().frame(width: 30)
+                
+                // 削除ボタン
+                ZStack {
+                    Capsule()
+                        .fill(Color.DeleteGradient)
+                        .frame(width:100, height: 40)
+                    HStack{
+                        Image(systemName: "minus.circle.fill")
+                        Text("削除").font(.headline)
+                    }.foregroundColor(.white)
+                }.onTapGesture {
+                    self.delete()
+                } //:onTapGesture
+                Spacer()
+            } //:HsStack
 //MARK: -保存ボタン
-            } //:From
-            .navigationBarTitle("情報の編集")
-            .navigationBarItems(trailing: Button(action: {
-                self.save()
-            }){
-                Text("保存")
-            })
-            .frame(width: 375) //375にしておくと、iPhon8でも対応できる
-            
-        } //Navigationview
+        } //:From
+            .frame(width: UIScreen.screenWidth) //375にしておくと、iPhon8でも対応できる
     } //:body
 } //:view
+
 
 struct DetailData_Previews: PreviewProvider {
     static let context = (UIApplication.shared.delegate as! AppDelegate)
