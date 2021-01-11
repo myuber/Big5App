@@ -29,6 +29,7 @@
 		46B0C6762593FB11000CE822 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46B0C6742593FB11000CE822 /* LaunchScreen.storyboard */; };
 		46B0C67E2598B501000CE822 /* PersonalInfoEntity+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B0C67D2598B501000CE822 /* PersonalInfoEntity+Extension.swift */; };
 		46B0C684259ACC35000CE822 /* DataList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B0C683259ACC35000CE822 /* DataList.swift */; };
+		46DFA75E25AC1A6900510659 /* DetailData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DFA75D25AC1A6900510659 /* DetailData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -531,6 +532,7 @@
 		46B0C67D2598B501000CE822 /* PersonalInfoEntity+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersonalInfoEntity+Extension.swift"; sourceTree = "<group>"; };
 		46B0C6822599B7DB000CE822 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		46B0C683259ACC35000CE822 /* DataList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataList.swift; sourceTree = "<group>"; };
+		46DFA75D25AC1A6900510659 /* DetailData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailData.swift; sourceTree = "<group>"; };
 		7D24BC76E3A6995D2E128145 /* Pods-Big5.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big5.debug.xcconfig"; path = "Target Support Files/Pods-Big5/Pods-Big5.debug.xcconfig"; sourceTree = "<group>"; };
 		EAAD7D612D7E72BFF975A28A /* Pods_Big5.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Big5.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2C1B33346BB15E18238C567 /* Pods-Big5.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big5.release.xcconfig"; path = "Target Support Files/Pods-Big5/Pods-Big5.release.xcconfig"; sourceTree = "<group>"; };
@@ -1476,13 +1478,11 @@
 				46B0C6662593FB0D000CE822 /* AppDelegate.swift */,
 				46B0C6682593FB0D000CE822 /* SceneDelegate.swift */,
 				46B0C66D2593FB0D000CE822 /* ContentView.swift */,
-				464C0F03259B201900917D66 /* EditData.swift */,
-				464C114825A1311500917D66 /* NewData.swift */,
 				46B0C683259ACC35000CE822 /* DataList.swift */,
-				464C114A25A132BE00917D66 /* big5Edit.swift */,
-				464C115625A3CFA900917D66 /* big5New.swift */,
-				464C116225A899D100917D66 /* big5SlideView.swift */,
-				467A7B9F25AADCAB00956DBD /* big5QuesCard.swift */,
+				464C0F03259B201900917D66 /* EditData.swift */,
+				46DFA75D25AC1A6900510659 /* DetailData.swift */,
+				464C114825A1311500917D66 /* NewData.swift */,
+				46DFA75C25AC194000510659 /* big5 */,
 				464C115825A4A8B300917D66 /* ObservedClass.swift */,
 				464C116625A9831000917D66 /* TopLeftShape.swift */,
 				464C114C25A1E12F00917D66 /* ChartView.swift */,
@@ -1512,6 +1512,17 @@
 				464C116425A8A42100917D66 /* CGFloat+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		46DFA75C25AC194000510659 /* big5 */ = {
+			isa = PBXGroup;
+			children = (
+				464C114A25A132BE00917D66 /* big5Edit.swift */,
+				464C115625A3CFA900917D66 /* big5New.swift */,
+				464C116225A899D100917D66 /* big5SlideView.swift */,
+				467A7B9F25AADCAB00956DBD /* big5QuesCard.swift */,
+			);
+			path = big5;
 			sourceTree = "<group>";
 		};
 		A871050E6A441129A4512EA7 /* Pods */ = {
@@ -1703,6 +1714,7 @@
 				46B0C66E2593FB0D000CE822 /* ContentView.swift in Sources */,
 				464C115925A4A8B300917D66 /* ObservedClass.swift in Sources */,
 				464C115725A3CFA900917D66 /* big5New.swift in Sources */,
+				46DFA75E25AC1A6900510659 /* DetailData.swift in Sources */,
 				464C0F06259D766700917D66 /* Binding+Extension.swift in Sources */,
 				46B0C67E2598B501000CE822 /* PersonalInfoEntity+Extension.swift in Sources */,
 				464C116525A8A42100917D66 /* CGFloat+Extension.swift in Sources */,

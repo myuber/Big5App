@@ -11,19 +11,15 @@ import SwiftUI
 struct ContentView: View {
     
     var body: some View {
-        NavigationView {
-            VStack {
-                NavigationLink(destination: NewData()) {
-                        Text("インプット")
-                }
-                NavigationLink(destination: DataList()) {
-                        Text("一覧")
-                }
-                
-            }
-        }
-    }
-}
+        VStack {
+//MARK: -body
+            DataList()
+            
+//MARK: -admob
+            
+        } //:VStack
+    } //:body
+} //:view
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

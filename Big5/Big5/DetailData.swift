@@ -1,15 +1,15 @@
 //
-//  EditData.swift
+//  DetailData.swift
 //  Big5
 //
-//  Created by がり on 2020/12/29.
-//  Copyright © 2020 がり. All rights reserved.
+//  Created by がり on 2021/01/11.
+//  Copyright © 2021 がり. All rights reserved.
 //
 
 import SwiftUI
 import Charts
 
-struct EditData: View {
+struct DetailData: View {
     @ObservedObject var personalData: PersonalInfoEntity
     // 保存処理に必要なコンテキスト
     @Environment(\.managedObjectContext) var viewContext
@@ -171,13 +171,13 @@ struct EditData: View {
     } //:body
 } //:view
 
-struct EditData_Previews: PreviewProvider {
+struct DetailData_Previews: PreviewProvider {
     static let context = (UIApplication.shared.delegate as! AppDelegate)
         .persistentContainer.viewContext
     
     static var previews: some View {
         let newData = PersonalInfoEntity(context: context)
-        return EditData(personalData: newData)
+        return DetailData(personalData: newData)
             .environment(\.managedObjectContext, context)
     }
 }
