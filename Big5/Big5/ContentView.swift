@@ -10,14 +10,40 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State var showNewData = false
+    
     var body: some View {
-        VStack {
+        ZStack{
+        
 //MARK: -body
-            DataList()
+            VStack {
+                DataList()
+                HStack{
+                    Spacer()
+                    Button(action: {
+                        self.showNewData = true
+                    }, label: {
+                        Image(systemName: "person.crop.circle.badge.plus")
+                            .resizable()
+                            .scaledToFill()             //アスペクト比を維持してリサイズする
+                            .frame(width: 50, height: 50)
+                    })
+                    
+                    Spacer().frame(width: 30)
+                }
+                
+                Spacer().frame(height: 30)
+    //MARK: -admob
+                // Admob用のフレームを用意
+                Rectangle().frame(width: UIScreen.screenWidth, height:50)
+                
+            } //:VStack
+//MARK: -NewData
+            if showNewData {
+                NewData(showNewData: $showNewData)
+            }
             
-//MARK: -admob
-            
-        } //:VStack
+        } //:ZStack
     } //:body
 } //:view
 

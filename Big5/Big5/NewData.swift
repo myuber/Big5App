@@ -9,6 +9,9 @@
 import SwiftUI
 
 struct NewData: View {
+    // Viewの表示を切り替える変数
+    @Binding var showNewData: Bool
+    
     // 保存処理に必要なコンテキスト
     @Environment(\.managedObjectContext) var viewContext
     
@@ -139,7 +142,10 @@ struct NewData: View {
                 HStack(alignment: .center) {
                     Spacer()
                     Button(action: {
+                        // 入力データをクリア
                         self.cancelData()
+                        // 閉じる
+                        self.showNewData = false
                     }){
                         HStack{
                             Image(systemName: "minus.circle.fill")
@@ -167,6 +173,9 @@ struct NewData: View {
                                           explanation: self.explanation)
                 // 保存処理
                 self.save()
+                
+                // 閉じる
+                self.showNewData = false
             }){
                 Text("追加")
             })
@@ -178,8 +187,9 @@ struct NewData: View {
 struct NewData_Previews: PreviewProvider {
     static let context = (UIApplication.shared.delegate as! AppDelegate)
         .persistentContainer.viewContext
+
+    
     static var previews: some View {
-        NewData()
-            .environment(\.managedObjectContext, context)
+        ContentView()
     }
 }
