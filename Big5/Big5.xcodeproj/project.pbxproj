@@ -13,7 +13,6 @@
 		464C114925A1311500917D66 /* NewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464C114825A1311500917D66 /* NewData.swift */; };
 		464C114B25A132BE00917D66 /* big5Edit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464C114A25A132BE00917D66 /* big5Edit.swift */; };
 		464C114D25A1E12F00917D66 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464C114C25A1E12F00917D66 /* ChartView.swift */; };
-		464C115725A3CFA900917D66 /* big5New.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464C115625A3CFA900917D66 /* big5New.swift */; };
 		464C115925A4A8B300917D66 /* ObservedClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464C115825A4A8B300917D66 /* ObservedClass.swift */; };
 		464C115B25A5F11E00917D66 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464C115A25A5F11E00917D66 /* Color+Extension.swift */; };
 		464C116325A899D100917D66 /* big5SlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464C116225A899D100917D66 /* big5SlideView.swift */; };
@@ -513,7 +512,6 @@
 		464C114825A1311500917D66 /* NewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewData.swift; sourceTree = "<group>"; };
 		464C114A25A132BE00917D66 /* big5Edit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = big5Edit.swift; sourceTree = "<group>"; };
 		464C114C25A1E12F00917D66 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
-		464C115625A3CFA900917D66 /* big5New.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = big5New.swift; sourceTree = "<group>"; };
 		464C115825A4A8B300917D66 /* ObservedClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservedClass.swift; sourceTree = "<group>"; };
 		464C115A25A5F11E00917D66 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		464C116225A899D100917D66 /* big5SlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = big5SlideView.swift; path = /Users/gari/pyworks/Big5App/Big5/Big5/big5SlideView.swift; sourceTree = "<absolute>"; };
@@ -1518,7 +1516,6 @@
 			isa = PBXGroup;
 			children = (
 				464C114A25A132BE00917D66 /* big5Edit.swift */,
-				464C115625A3CFA900917D66 /* big5New.swift */,
 				464C116225A899D100917D66 /* big5SlideView.swift */,
 				467A7B9F25AADCAB00956DBD /* big5QuesCard.swift */,
 			);
@@ -1713,7 +1710,6 @@
 				464C114925A1311500917D66 /* NewData.swift in Sources */,
 				46B0C66E2593FB0D000CE822 /* ContentView.swift in Sources */,
 				464C115925A4A8B300917D66 /* ObservedClass.swift in Sources */,
-				464C115725A3CFA900917D66 /* big5New.swift in Sources */,
 				46DFA75E25AC1A6900510659 /* DetailData.swift in Sources */,
 				464C0F06259D766700917D66 /* Binding+Extension.swift in Sources */,
 				46B0C67E2598B501000CE822 /* PersonalInfoEntity+Extension.swift in Sources */,
