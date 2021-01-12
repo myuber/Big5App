@@ -12,6 +12,9 @@ struct big5SlideView: View {
     // 保存処理に必要なコンテキスト
     @Environment(\.managedObjectContext) var viewContext
     
+    // Viewを閉じるための変数
+    @Environment (\.presentationMode) var presentationMode
+    
     //@Binding var showSlideMenu: Bool
     @State var showSlideMenu: Bool = false
     @State var showSlideNum: Int = 0
@@ -69,7 +72,7 @@ struct big5SlideView: View {
                        // // それぞれのBig5の数値を入力する1〜5の数字ボタンを表示
                        ForEach (1..<6) { num in
                             Button(action: {
-                                if(self.showSlideNum < 9){
+                                if(self.showSlideNum < 10){
                                     // 質問数に応じてBig5の値を格納していく
                                     switch self.showSlideNum {
                                         case 0:
@@ -90,8 +93,17 @@ struct big5SlideView: View {
                                             self.personalData.big5NotOpen = Int16(num)
                                         case 8:
                                             self.personalData.big5NotConscien = Int16(num)
-                                        case 9:
+                                        case 9: // 最後の質問が終わったらそのままViewを閉じる
                                             self.personalData.big5NotNeuro = Int16(num)
+                                            
+                                            // 全ての値を計算する
+                                            self.personalData.big5Agree -= self.personalData.big5NotAgree
+                                            self.personalData.big5Extra -= self.personalData.big5NotExtra
+                                            self.personalData.big5Open -= self.personalData.big5NotOpen
+                                            self.personalData.big5Conscien -= self.personalData.big5NotConscien
+                                            self.personalData.big5Neuro -= self.personalData.big5NotNeuro
+                                        
+                                            self.presentationMode.wrappedValue.dismiss()
                                         // defaultは発生しない(1ページ目に戻るように設定しておく)
                                         default:
                                             self.showSlideNum = 0
@@ -122,10 +134,29 @@ struct big5SlideView: View {
                     } //: HStack
                     .padding(.top, 15)
                     
+                    VStack{
+                        HStack {
+                            Text(String(self.personalData.big5Agree))
+                            Text(String(self.personalData.big5Extra))
+                            Text(String(self.personalData.big5Open))
+                            Text(String(self.personalData.big5Conscien))
+                            Text(String(self.personalData.big5Neuro))
+                            
+                        }
+                        HStack {
+                            Text(String(self.personalData.big5NotAgree))
+                            Text(String(self.personalData.big5NotExtra))
+                            Text(String(self.personalData.big5NotOpen))
+                            Text(String(self.personalData.big5NotConscien))
+                            Text(String(self.personalData.big5NotNeuro))
+                            
+                        }
+                    }
 
                 } //:VStack
             } //:ScrollView
         } //:ZStack
+            .frame(height: UIScreen.screenHeight)
     } //:body
 } //:view
 

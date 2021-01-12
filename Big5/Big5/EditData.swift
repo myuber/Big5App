@@ -69,7 +69,16 @@ struct EditData: View {
                         Spacer()
                     } //:HStack
                     NavigationLink(destination: big5SlideView(personalData: personalData)){
+                        Spacer()
+                        ZStack {
+                            Capsule()
+                                .fill(Color.diagonalGradient)
+                                .frame(width:200, height: 40)
                             Text("Big5を登録する")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                        } //:ZStack
+                        Spacer()
                     } //:NavigationLink
                 } //:Section
                     
