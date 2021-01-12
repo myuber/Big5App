@@ -14,8 +14,10 @@ struct DetailData: View {
     // 保存処理に必要なコンテキスト
     @Environment(\.managedObjectContext) var viewContext
     
-    // Big5Editを表示するSheet判定用の変数
+    
+    // 表示するSheet判定用の変数
     @State var showEditSheet = false
+    @State var showbig5SlideView = false
     
     // 削除処理
     fileprivate func delete() {
@@ -157,7 +159,7 @@ struct DetailData: View {
                 }.onTapGesture {
                     self.showEditSheet = true
                 }.sheet(isPresented: $showEditSheet) {
-                    EditData(personalData: self.personalData)
+                    EditData(personalData: self.personalData, showbig5SlideView: self.$showbig5SlideView)
                     .environment(\.managedObjectContext, self.viewContext)
                 } //:onTapGesture
                 

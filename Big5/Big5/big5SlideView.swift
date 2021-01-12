@@ -12,6 +12,9 @@ struct big5SlideView: View {
     // 保存処理に必要なコンテキスト
     @Environment(\.managedObjectContext) var viewContext
     
+    // big5SlideViewを表示/非表示を切り替える変数
+    @Binding var showbig5SlideView: Bool
+    
     // Viewを閉じるための変数
     @Environment (\.presentationMode) var presentationMode
     
@@ -30,6 +33,9 @@ struct big5SlideView: View {
 // MARK: - Background
         Color.black.opacity(0.85)
             .edgesIgnoringSafeArea(.all)
+            .onTapGesture {
+                self.showbig5SlideView = false
+            }
             
             ZStack {
                 // 背景でグラデーションを配置
@@ -53,7 +59,6 @@ struct big5SlideView: View {
                         .clipShape(Circle())
                 } //: ZStack
                     .padding(.top, -60)
-                    .padding(.bottom, 18)
                     .scaleEffect(showAnimation ? 1 : 0)
                 
                     VStack {
@@ -130,7 +135,7 @@ struct big5SlideView: View {
                                                 self.personalData.big5Neuro -= self.personalData.big5NotNeuro
                                             
                                                 // Viewを閉じる
-                                                self.presentationMode.wrappedValue.dismiss()
+                                                self.showbig5SlideView = false
                                             // defaultは発生しない(1ページ目に戻るように設定しておく)
                                             default:
                                                 self.showSlideNum = 0
@@ -160,7 +165,7 @@ struct big5SlideView: View {
                             Text("5.当てはまる")
                             .foregroundColor(.white)
                         } //: HStack
-                        .padding(.top, 15)
+                        .padding(.top, 5)
                         .scaleEffect(showAnimation ? 1 : 0)
                         
                         VStack{
@@ -185,7 +190,7 @@ struct big5SlideView: View {
                     } //:VStack
                 } //:VStack
             } //:ZStack
-                .padding(.top, 100)
+                .padding(.top, 130)
         } //:ZStack
             .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight)
             .onAppear(perform: {
@@ -200,11 +205,11 @@ struct big5SlideView: View {
     
 struct big5SlideView_Previews: PreviewProvider {
     static let context = (UIApplication.shared.delegate as! AppDelegate)
-    .persistentContainer.viewContext
+        .persistentContainer.viewContext
     
     static var previews: some View {
         let newData = PersonalInfoEntity(context: context)
-        return big5SlideView(personalData: newData)
-        .environment(\.managedObjectContext, context)
+        return DetailData(personalData: newData)
+            .environment(\.managedObjectContext, context)
     }
 }

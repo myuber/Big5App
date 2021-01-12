@@ -14,6 +14,9 @@ struct EditData: View {
     // 保存処理に必要なコンテキスト
     @Environment(\.managedObjectContext) var viewContext
     
+    // big5SlideViewを表示/非表示を切り替える変数
+    @Binding var showbig5SlideView: Bool
+    
     // モーダルViewを閉じるための変数
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -38,7 +41,7 @@ struct EditData: View {
     
 //MARK: -body
     var body: some View {
-        NavigationView {
+        ZStack {
             Form {
 //MARK: -chart
                 VStack {
@@ -68,7 +71,7 @@ struct EditData: View {
                             }
                         Spacer()
                     } //:HStack
-                    NavigationLink(destination: big5SlideView(personalData: personalData)){
+                    HStack{
                         Spacer()
                         ZStack {
                             Capsule()
@@ -78,8 +81,11 @@ struct EditData: View {
                                 .font(.headline)
                                 .foregroundColor(.white)
                         } //:ZStack
+                            .onTapGesture {
+                                self.showbig5SlideView = true
+                        }
                         Spacer()
-                    } //:NavigationLink
+                    }
                 } //:Section
                     
                
@@ -180,18 +186,19 @@ struct EditData: View {
             })
                 .frame(width: UIScreen.screenWidth)
             
-        } //Navigationview
+            //MARK: -big5SlideView
+            if showbig5SlideView {
+                big5SlideView(personalData: personalData, showbig5SlideView: $showbig5SlideView)
+            }
+            
+        } //:ZStack
     } //:body
 } //:view
 
 struct EditData_Previews: PreviewProvider {
-    static let context = (UIApplication.shared.delegate as! AppDelegate)
-        .persistentContainer.viewContext
     
     static var previews: some View {
-        let newData = PersonalInfoEntity(context: context)
-        return EditData(personalData: newData)
-            .environment(\.managedObjectContext, context)
+        ContentView()
     }
 }
 

@@ -20,12 +20,19 @@ struct big5QuesCard: View {
                 
                 .shadow(color: Color.black.opacity(0.4), radius: 12.5, x: 0, y: 18)     // 影を描画
                 .opacity(0.7)
-            
-            Text(QuestionWord)
-                .frame(width: CGFloat.cardWidth - 20, height: CGFloat.cardHeight)
+            VStack{
+                Text("直感で質問に答えてください")
+                    .font(.headline)
+                    .fontWeight(.bold)
+                    .padding(.top, 30)
+                Spacer()
+                Text(QuestionWord)
+                Spacer()
+            } //:VStack
+            .frame(width: CGFloat.cardWidth - 20, height: CGFloat.cardHeight)
         } //:ZStack
     }
-}
+} //:view
 
 struct big5QuesCard_Previews: PreviewProvider {
     static var previews: some View {
