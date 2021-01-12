@@ -10,7 +10,7 @@ import SwiftUI
 import CoreData
 
 struct DataList: View {
-    
+    @Binding var showNewData: Bool
     // CoreDataのデータを取得するアノテーション
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \PersonalInfoEntity.name,
@@ -22,23 +22,41 @@ struct DataList: View {
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach(personalDataList) { data in
-                    NavigationLink(destination: DetailData(personalData: data)) {
-                        HStack {
-                            Text(data.name ?? "未設定")
-                            Text(data.tel ?? "未設定")
-                        }
-                    }
+            VStack {
+                List {
+                    ForEach(personalDataList) { data in
+                        NavigationLink(destination: DetailData(personalData: data)) {
+                            HStack {
+                                Text(data.name ?? "未設定")
+                                Text(data.tel ?? "未設定")
+                            } //:HStack
+                        } //:NavigationLink
+                    } //:ForEach
+                } //:List
+                HStack{
+                    Spacer()
+                    Button(action: {
+                        self.showNewData = true
+                    }, label: {
+                        Image(systemName: "person.crop.circle.badge.plus")
+                            .resizable()
+                            .scaledToFill()             //アスペクト比を維持してリサイズする
+                            .frame(width: 50, height: 50)
+                    })
+                    
+                    Spacer().frame(width: 30)
                 }
-            }
-        }.navigationBarTitle("一覧表示")
-    }
-}
+            } //:VStack
+        } //:NavigationView
+        .navigationBarTitle("一覧表示")
+    } //:body
+} //:view
 
 struct PersonalDataList_Previews: PreviewProvider {
     static let container = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
     static let context = container.viewContext
+    
+    @Binding var showNewData: Bool
     
     static var previews: some View {
         // テストデータの全削除
@@ -75,9 +93,7 @@ struct PersonalDataList_Previews: PreviewProvider {
                                      mail: "ossa@xxxxx.com",
                                      explanation: "おっさです")
 
-                                   
         
-        return DataList()
-            .environment(\.managedObjectContext, context)
+        return ContentView()
     }
 }

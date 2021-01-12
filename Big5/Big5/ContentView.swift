@@ -17,20 +17,7 @@ struct ContentView: View {
         
 //MARK: -body
             VStack {
-                DataList()
-                HStack{
-                    Spacer()
-                    Button(action: {
-                        self.showNewData = true
-                    }, label: {
-                        Image(systemName: "person.crop.circle.badge.plus")
-                            .resizable()
-                            .scaledToFill()             //アスペクト比を維持してリサイズする
-                            .frame(width: 50, height: 50)
-                    })
-                    
-                    Spacer().frame(width: 30)
-                }
+                DataList(showNewData: $showNewData)
                 
                 Spacer().frame(height: 30)
     //MARK: -admob
