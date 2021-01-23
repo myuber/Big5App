@@ -2,79 +2,83 @@
 //  ContentView.swift
 //  Big5App
 //
-//  Created by がり on 2021/01/18.
+//  Created by がり on 2021/01/21.
 //
 
 import SwiftUI
-import CoreData
+
+
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
-
+    
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \PersonalDataEntity.name,
+             ascending: true)],
+         animation: .default
+    )
+    
+    private var personalData: FetchedResults<PersonalDataEntity>
+    
     var body: some View {
-        List {
-            ForEach(items) { item in
-                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-            }
-            .onDelete(perform: deleteItems)
-        }
-        .toolbar {
-            #if os(iOS)
-            EditButton()
-            #endif
-
-            Button(action: addItem) {
-                Label("Add Item", systemImage: "plus")
-            }
+        NavigationView {
+            List {
+                ForEach(personalData) { data in
+                    NavigationLink(destination: EditData(personalData: data)) {
+                        HStack {
+                            Text(data.name ?? "未設定")
+                            Text(data.tel ?? "未設定")
+                        } //:HStack
+                    } //:NavigationLink
+                } //:ForEach
+                .onDelete(perform: deleteData)
+            } //:List
+            .navigationTitle("PersonalData")
+            .navigationBarItems(trailing: Button("追加"){
+                addData()
+            })
         }
     }
-
-    private func addItem() {
+    
+    private func saveContext() {
+        do {
+            try viewContext.save()
+        } catch {
+            let error = error as NSError
+            fatalError("Unresolved Error: \(error)")
+        }
+    }
+    
+    private func updateData(_ data: FetchedResults<PersonalDataEntity>.Element) {
         withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+            data.name = "Updated"
+            saveContext()
         }
     }
-
-    private func deleteItems(offsets: IndexSet) {
+    
+    
+    private func deleteData(offsets: IndexSet) {
         withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+            offsets.map { personalData[$0] }.forEach(viewContext.delete)
+            saveContext()
+            
         }
     }
+    
+    private func addData() {
+        withAnimation {
+            let newData = PersonalDataEntity(context: viewContext)
+            newData.name = "New Data \(Date())"
+            newData.id = "\(Date())"
+            
+            saveContext()
+        }
+    }
+    
+    
 }
-
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView()
     }
 }

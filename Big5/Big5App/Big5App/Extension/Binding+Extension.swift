@@ -1,10 +1,10 @@
 //
 //  Binding+Extension.swift
-//  Big5
+//  Big5App
 //
-//  Created by がり on 2020/12/31.
-//  Copyright © 2020 がり. All rights reserved.
+//  Created by がり on 2021/01/24.
 //
+
 import SwiftUI
 
 
