@@ -14,9 +14,23 @@ struct Big5AppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext,
-                             persistentContainer.container.viewContext)
+            NavigationView{
+                VStack{
+                    NavigationLink(destination:
+                                    NewData().environment(\.managedObjectContext,
+                                        persistentContainer.container.viewContext)
+                    ) {
+                        Text("インプット")
+                    } //:NavigationLink
+                    
+                    NavigationLink(destination:
+                                    ContentView().environment(\.managedObjectContext,
+                                     persistentContainer.container.viewContext)
+                    ) {
+                        Text("一覧")
+                    } //:NavigationLink
+                } //:VStack
+            } //:NavigationView
         }
     }
 }

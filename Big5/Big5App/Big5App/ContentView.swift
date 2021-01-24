@@ -19,6 +19,7 @@ struct ContentView: View {
     
     private var personalData: FetchedResults<PersonalDataEntity>
     
+    
     var body: some View {
         NavigationView {
             List {
@@ -33,12 +34,12 @@ struct ContentView: View {
                 .onDelete(perform: deleteData)
             } //:List
             .navigationTitle("PersonalData")
-            .navigationBarItems(trailing: Button("追加"){
-                addData()
-            })
-        }
-    }
+            
+        } //:NavigationView
+    } //:body
     
+    
+    //MARK: -function
     private func saveContext() {
         do {
             try viewContext.save()
@@ -46,15 +47,14 @@ struct ContentView: View {
             let error = error as NSError
             fatalError("Unresolved Error: \(error)")
         }
-    }
+    } //:func
     
     private func updateData(_ data: FetchedResults<PersonalDataEntity>.Element) {
         withAnimation {
             data.name = "Updated"
             saveContext()
         }
-    }
-    
+    } //:func
     
     private func deleteData(offsets: IndexSet) {
         withAnimation {
@@ -62,7 +62,7 @@ struct ContentView: View {
             saveContext()
             
         }
-    }
+    } //:func
     
     private func addData() {
         withAnimation {
@@ -72,11 +72,12 @@ struct ContentView: View {
             
             saveContext()
         }
-    }
+    } //:func
     
     
-}
+} //:view
 
+//MARK: -preview
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
