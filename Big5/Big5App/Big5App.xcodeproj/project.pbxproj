@@ -19,6 +19,7 @@
 		46D93B3C25BD75F20031DD92 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D93B3B25BD75F20031DD92 /* Color+Extension.swift */; };
 		46D93B4025BD761A0031DD92 /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D93B3F25BD761A0031DD92 /* CGFloat+Extension.swift */; };
 		46D93B4725BD9BE20031DD92 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D93B4625BD9BE20031DD92 /* ChartView.swift */; };
+		46D93B4C25BD9D0A0031DD92 /* big5Edit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D93B4B25BD9D0A0031DD92 /* big5Edit.swift */; };
 		5A9A37A62AEA3A967947BCC4 /* Pods_Big5App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 545B744CD1CF28F4CEA09159 /* Pods_Big5App.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +39,7 @@
 		46D93B3B25BD75F20031DD92 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		46D93B3F25BD761A0031DD92 /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
 		46D93B4625BD9BE20031DD92 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		46D93B4B25BD9D0A0031DD92 /* big5Edit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = big5Edit.swift; sourceTree = "<group>"; };
 		545B744CD1CF28F4CEA09159 /* Pods_Big5App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Big5App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF0832B25BD497AC58AD6D24 /* Pods-Big5App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big5App.release.xcconfig"; path = "Target Support Files/Pods-Big5App/Pods-Big5App.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,6 +82,7 @@
 				46D93B1B25B932330031DD92 /* ContentView.swift */,
 				46D93B3825BCFB030031DD92 /* NewData.swift */,
 				46D93B3025BC57800031DD92 /* EditData.swift */,
+				46D93B4B25BD9D0A0031DD92 /* big5Edit.swift */,
 				46D93B4625BD9BE20031DD92 /* ChartView.swift */,
 				46D93B2D25B934390031DD92 /* Persistence.swift */,
 				46D93B2925B932860031DD92 /* Big5App.xcdatamodeld */,
@@ -247,6 +250,7 @@
 				46D93B4025BD761A0031DD92 /* CGFloat+Extension.swift in Sources */,
 				46D93B3125BC57800031DD92 /* EditData.swift in Sources */,
 				46D93B1A25B932330031DD92 /* Big5AppApp.swift in Sources */,
+				46D93B4C25BD9D0A0031DD92 /* big5Edit.swift in Sources */,
 				46D93B3C25BD75F20031DD92 /* Color+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

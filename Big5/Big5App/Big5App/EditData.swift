@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import Charts
 
 struct EditData: View {
     @ObservedObject var personalData: PersonalDataEntity
     // 保存処理に必要なコンテキスト
     @Environment(\.managedObjectContext) private var viewContext
+    
+    let persistentContainer = PersistentController.shared
 
     
     // Big5Editを表示するSheet判定用の変数
@@ -44,8 +47,7 @@ struct EditData: View {
             } //:VStack
             //MARK: -Chart
             Section {
-                Text("Chart")
-                /*
+                
                 HStack {
                     Spacer()
                     ChartView(entries: [
@@ -59,11 +61,13 @@ struct EditData: View {
                     .onTapGesture {
                         self.showBig5EditSheet = true
                     }.sheet(isPresented: $showBig5EditSheet) {
-                        big5Edit(personalData: self.personalData)
-                        .environment(\.managedObjectContext, self.viewContext)
+                        big5Edit(personalData: personalData)
+                            .environment(\.managedObjectContext,
+                                persistentContainer.container.viewContext)
                     } //:sheet
                     Spacer()
                 } //:HStack
+                /*
                 NavigationLink(destination: big5SlideView(personalData: personalData)){
                         Text("Big5を登録する")
                 } //:NavigationLink
