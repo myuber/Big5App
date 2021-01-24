@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,9 +18,12 @@
 		46D93B3925BCFB030031DD92 /* NewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D93B3825BCFB030031DD92 /* NewData.swift */; };
 		46D93B3C25BD75F20031DD92 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D93B3B25BD75F20031DD92 /* Color+Extension.swift */; };
 		46D93B4025BD761A0031DD92 /* CGFloat+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D93B3F25BD761A0031DD92 /* CGFloat+Extension.swift */; };
+		46D93B4725BD9BE20031DD92 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D93B4625BD9BE20031DD92 /* ChartView.swift */; };
+		5A9A37A62AEA3A967947BCC4 /* Pods_Big5App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 545B744CD1CF28F4CEA09159 /* Pods_Big5App.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C1518D77AF8AFBA41E4EC63 /* Pods-Big5App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big5App.debug.xcconfig"; path = "Target Support Files/Pods-Big5App/Pods-Big5App.debug.xcconfig"; sourceTree = "<group>"; };
 		46D93B1625B932330031DD92 /* Big5App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Big5App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46D93B1925B932330031DD92 /* Big5AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Big5AppApp.swift; sourceTree = "<group>"; };
 		46D93B1B25B932330031DD92 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -34,6 +37,9 @@
 		46D93B3825BCFB030031DD92 /* NewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewData.swift; sourceTree = "<group>"; };
 		46D93B3B25BD75F20031DD92 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		46D93B3F25BD761A0031DD92 /* CGFloat+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Extension.swift"; sourceTree = "<group>"; };
+		46D93B4625BD9BE20031DD92 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		545B744CD1CF28F4CEA09159 /* Pods_Big5App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Big5App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF0832B25BD497AC58AD6D24 /* Pods-Big5App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big5App.release.xcconfig"; path = "Target Support Files/Pods-Big5App/Pods-Big5App.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A9A37A62AEA3A967947BCC4 /* Pods_Big5App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +59,8 @@
 			children = (
 				46D93B1825B932330031DD92 /* Big5App */,
 				46D93B1725B932330031DD92 /* Products */,
+				6CBC3C2E55B9949BAD8C4444 /* Pods */,
+				4933F95286DC5967FDC4ABC0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +80,7 @@
 				46D93B1B25B932330031DD92 /* ContentView.swift */,
 				46D93B3825BCFB030031DD92 /* NewData.swift */,
 				46D93B3025BC57800031DD92 /* EditData.swift */,
+				46D93B4625BD9BE20031DD92 /* ChartView.swift */,
 				46D93B2D25B934390031DD92 /* Persistence.swift */,
 				46D93B2925B932860031DD92 /* Big5App.xcdatamodeld */,
 				46D93B1D25B932360031DD92 /* Assets.xcassets */,
@@ -98,6 +108,23 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		4933F95286DC5967FDC4ABC0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				545B744CD1CF28F4CEA09159 /* Pods_Big5App.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6CBC3C2E55B9949BAD8C4444 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3C1518D77AF8AFBA41E4EC63 /* Pods-Big5App.debug.xcconfig */,
+				FF0832B25BD497AC58AD6D24 /* Pods-Big5App.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -105,9 +132,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 46D93B2525B932360031DD92 /* Build configuration list for PBXNativeTarget "Big5App" */;
 			buildPhases = (
+				3F4D23D7E8E889AAC83CB098 /* [CP] Check Pods Manifest.lock */,
 				46D93B1225B932330031DD92 /* Sources */,
 				46D93B1325B932330031DD92 /* Frameworks */,
 				46D93B1425B932330031DD92 /* Resources */,
+				0BD8C56E9D89640B78D44943 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -162,6 +191,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0BD8C56E9D89640B78D44943 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Big5App/Pods-Big5App-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Big5App/Pods-Big5App-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Big5App/Pods-Big5App-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3F4D23D7E8E889AAC83CB098 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Big5App-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		46D93B1225B932330031DD92 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -170,6 +241,7 @@
 				46D93B3925BCFB030031DD92 /* NewData.swift in Sources */,
 				46D93B2B25B932860031DD92 /* Big5App.xcdatamodeld in Sources */,
 				46D93B3525BCDCAD0031DD92 /* Binding+Extension.swift in Sources */,
+				46D93B4725BD9BE20031DD92 /* ChartView.swift in Sources */,
 				46D93B2E25B934390031DD92 /* Persistence.swift in Sources */,
 				46D93B1C25B932330031DD92 /* ContentView.swift in Sources */,
 				46D93B4025BD761A0031DD92 /* CGFloat+Extension.swift in Sources */,
@@ -300,6 +372,7 @@
 		};
 		46D93B2625B932360031DD92 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3C1518D77AF8AFBA41E4EC63 /* Pods-Big5App.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -322,6 +395,7 @@
 		};
 		46D93B2725B932360031DD92 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF0832B25BD497AC58AD6D24 /* Pods-Big5App.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
