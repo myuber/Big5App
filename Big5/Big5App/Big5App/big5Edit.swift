@@ -65,8 +65,10 @@ struct big5Edit: View {
     }
 }
 
+/*
 struct big5Edit_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
+*/

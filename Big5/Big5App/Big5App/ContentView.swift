@@ -10,6 +10,7 @@ import SwiftUI
 
 
 struct ContentView: View {
+    @Binding var showNewData: Bool
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \PersonalDataEntity.name,
@@ -22,20 +23,33 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            List {
-                ForEach(personalData) { data in
-                    NavigationLink(destination: EditData(personalData: data)) {
-                        HStack {
-                            Text(data.name ?? "未設定")
-                            Text(data.tel ?? "未設定")
-                        } //:HStack
-                    } //:NavigationLink
-                } //:ForEach
-                .onDelete(perform: deleteData)
-            } //:List
-            .navigationTitle("PersonalData")
-            
+            VStack {
+                List {
+                    ForEach(personalData) { data in
+                        NavigationLink(destination: DetailData(personalData: data)) {
+                            HStack {
+                                Text(data.name ?? "未設定")
+                                Text(data.tel ?? "未設定")
+                            } //:HStack
+                        } //:NavigationLink
+                    } //:ForEach
+                } //:List
+                HStack{
+                    Spacer()
+                    Button(action: {
+                        self.showNewData = true
+                    }, label: {
+                        Image(systemName: "person.crop.circle.badge.plus")
+                            .resizable()
+                            .scaledToFill()             //アスペクト比を維持してリサイズする
+                            .frame(width: 50, height: 50)
+                    })
+                    
+                    Spacer().frame(width: 30)
+                } //:HStack
+            } //:VStack
         } //:NavigationView
+        .navigationBarTitle("一覧表示")
     } //:body
     
     
@@ -77,9 +91,13 @@ struct ContentView: View {
     
 } //:view
 
+
 //MARK: -preview
+
+/*
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
+*/

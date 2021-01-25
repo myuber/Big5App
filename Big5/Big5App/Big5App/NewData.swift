@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct NewData: View {
+    // Viewの表示を切り替える変数
+    @Binding var showNewData: Bool
+    
     // 保存処理に必要なコンテキスト
-    @Environment(\.managedObjectContext) var viewContext
+    @Environment(\.managedObjectContext) private var viewContext
     
     @State var name: String = ""
     @State var kana: String = ""
@@ -43,6 +46,19 @@ struct NewData: View {
             newData.id = "\(Date())"
             
             saveContext()
+            
+            self.name = ""
+            self.kana = ""
+            self.nickname = ""
+            self.sex = ""
+            self.birthday = Date()
+            self.from = ""
+            self.job = ""
+            self.like = ""
+            self.dislike = ""
+            self.tel = ""
+            self.mail = ""
+            self.explanation = ""
         }
     }
     
@@ -57,6 +73,17 @@ struct NewData: View {
     
     fileprivate func cancelData() {
         self.name = ""
+        self.kana = ""
+        self.nickname = ""
+        self.sex = ""
+        self.birthday = Date()
+        self.from = ""
+        self.job = ""
+        self.like = ""
+        self.dislike = ""
+        self.tel = ""
+        self.mail = ""
+        self.explanation = ""
     }
     
     var body: some View {
@@ -143,7 +170,9 @@ struct NewData: View {
                 HStack(alignment: .center) {
                     Spacer()
                     Button(action: {
+                        // 入力データをクリア
                         cancelData()
+                        self.showNewData = false
                     }){
                         HStack{
                             Image(systemName: "minus.circle.fill")
@@ -157,6 +186,7 @@ struct NewData: View {
             .navigationBarItems(trailing: Button(action: {
                 // 新しいEntityデータを作成する
                 addNewData()
+                self.showNewData = false
             }){
                 Text("追加")
             })
@@ -165,8 +195,10 @@ struct NewData: View {
     }
 }
 
+/*
 struct NewData_Previews: PreviewProvider {
     static var previews: some View {
-        NewData()
+        NewData(showNewData: Binding(true))
     }
 }
+ */

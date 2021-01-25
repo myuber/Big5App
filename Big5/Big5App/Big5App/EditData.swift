@@ -16,8 +16,15 @@ struct EditData: View {
     let persistentContainer = PersistentController.shared
 
     
+    // big5SlideViewを表示/非表示を切り替える変数
+    @Binding var showbig5SlideView: Bool
+    
+    // モーダルViewを閉じるための変数
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     // Big5Editを表示するSheet判定用の変数
     @State var showBig5EditSheet = false
+    
     
     fileprivate func saveContext() {
         do {
@@ -67,11 +74,23 @@ struct EditData: View {
                     } //:sheet
                     Spacer()
                 } //:HStack
-                /*
-                NavigationLink(destination: big5SlideView(personalData: personalData)){
+                
+                HStack{
+                    Spacer()
+                    ZStack {
+                        Capsule()
+                            .fill(Color.diagonalGradient)
+                            .frame(width:200, height: 40)
                         Text("Big5を登録する")
-                } //:NavigationLink
-                */
+                            .font(.headline)
+                            .foregroundColor(.white)
+                    } //:ZStack
+                        .onTapGesture {
+                            self.showbig5SlideView = true
+                    }
+                    Spacer()
+                }
+                
                 
             } //:Section
             //MARK: -基本情報
@@ -164,22 +183,31 @@ struct EditData: View {
                         Text("削除")
                             .font(.headline)
                     }.foregroundColor(.red)
-                }
+                } //:Button
                 Spacer()
             } //:HStack
         } //:Form
         .navigationBarTitle("情報の編集")
         .navigationBarItems(trailing: Button(action: {
             self.saveContext()
+            self.presentationMode.wrappedValue.dismiss()
         }){
             Text("保存")
         })
-        .frame(width: 375)
+        .frame(width: UIScreen.screenWidth)
+        
+        //MARK: -big5SlideView
+        if showbig5SlideView {
+            big5SlideView(personalData: personalData, showbig5SlideView: $showbig5SlideView)
+        } //:if
+        
     } //:body
 } //:view
 
+/*
 struct EditData_Previews: PreviewProvider {
         static var previews: some View {
             ContentView()
     }
 }
+*/
