@@ -115,9 +115,9 @@ struct NewData: View {
                         Text("性別")
                             .frame(width: 120, alignment: .leading)
                         Picker(selection: $sex, label: Text("性別")){
-                            Text("男性").tag(0)
-                            Text("女性").tag(1)
-                            Text("その他").tag(2)
+                            Text("男性").tag("男性")
+                            Text("女性").tag("女性")
+                            Text("その他").tag("その他")
                         }
                         .pickerStyle(SegmentedPickerStyle())
                         .labelsHidden()

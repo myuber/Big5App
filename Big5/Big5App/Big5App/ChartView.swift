@@ -54,7 +54,7 @@ struct ChartView : UIViewRepresentable {
         // Y軸を設定
         let yAxis = uiView.yAxis
         yAxis.axisMaximum = 4
-        yAxis.axisMinimum = -4
+        yAxis.axisMinimum = -5
         yAxis.drawTopYLabelEntryEnabled = false
         yAxis.drawLabelsEnabled = false
         yAxis.valueFormatter = YAxisFormatter()
