@@ -68,7 +68,12 @@ struct EditData: View {
                     .onTapGesture {
                         self.showBig5EditSheet = true
                     }.sheet(isPresented: $showBig5EditSheet) {
-                        big5Edit(personalData: personalData)
+                        big5Edit(personalData: personalData,
+                                 EditAgree: personalData.big5Agree,
+                                 EditExtra: personalData.big5Extra,
+                                 EditOpen: personalData.big5Open,
+                                 EditConscien: personalData.big5Conscien,
+                                 EditNeuro: personalData.big5Neuro)
                             .environment(\.managedObjectContext,
                                 persistentContainer.container.viewContext)
                     } //:sheet
@@ -86,10 +91,21 @@ struct EditData: View {
                             .foregroundColor(.white)
                     } //:ZStack
                         .onTapGesture {
+                            // Big5を登録するときは,前データが残ってしまうのでデータをリセットする
+                            personalData.big5Agree = 0
+                            personalData.big5Extra = 0
+                            personalData.big5Open = 0
+                            personalData.big5Conscien = 0
+                            personalData.big5Neuro = 0
+                            personalData.big5NotAgree = 0
+                            personalData.big5NotExtra = 0
+                            personalData.big5NotOpen = 0
+                            personalData.big5NotConscien = 0
+                            personalData.big5NotNeuro = 0
                             self.showbig5SlideView = true
-                    }
+                    } //:onTapGesture
                     Spacer()
-                }
+                } //:HStack
                 
                 
             } //:Section
@@ -126,7 +142,7 @@ struct EditData: View {
                 DatePicker(selection: Binding($personalData.birthday, Date()),
                            displayedComponents: .date,
                            label: {Text("誕生日")}
-                ) // 多分Xcodeをアップデートすれば使えるカレンダー型のピッカー.datePickerStyle(GraphicalDatePickerStyle())
+                )
                 
                 HStack {
                     Text("出身地")
@@ -175,26 +191,38 @@ struct EditData: View {
             //----------- 登録ボタン -----------
             HStack(alignment: .center) {
                 Spacer()
-                Button(action: {
-                    self.deleteData()
-                }){
+                ZStack {
+                    Capsule()
+                        .fill(Color.EditGradient)
+                        .frame(width:100, height: 40)
+                    HStack{
+                        Image(systemName: "pencil.circle.fill")
+                        Text("保存").font(.headline)
+                    }.foregroundColor(.white)
+                }.onTapGesture {
+                    self.saveContext()
+                    self.presentationMode.wrappedValue.dismiss()
+                } //:onTapGesture
+                
+                Spacer()
+                
+                // 削除ボタン
+                ZStack {
+                    Capsule()
+                        .fill(Color.DeleteGradient)
+                        .frame(width:150, height: 40)
                     HStack{
                         Image(systemName: "minus.circle.fill")
-                        Text("削除")
-                            .font(.headline)
-                    }.foregroundColor(.red)
-                } //:Button
+                        Text("キャンセル").font(.headline)
+                    }.foregroundColor(.white)
+                }.onTapGesture {
+                    self.deleteData()
+                    self.presentationMode.wrappedValue.dismiss()
+                } //:onTapGesture
+                
                 Spacer()
             } //:HStack
         } //:Form
-        .navigationBarTitle("情報の編集")
-        .navigationBarItems(trailing: Button(action: {
-            self.saveContext()
-            self.presentationMode.wrappedValue.dismiss()
-        }){
-            Text("保存")
-        })
-        .frame(width: UIScreen.screenWidth)
         
         //MARK: -big5SlideView
         if showbig5SlideView {
@@ -207,7 +235,8 @@ struct EditData: View {
 /*
 struct EditData_Previews: PreviewProvider {
         static var previews: some View {
-            ContentView()
+            big5Edit(personalData: <#T##PersonalDataEntity#>, EditAgree: <#T##Int16#>, EditExtra: <#T##Int16#>, EditOpen: <#T##Int16#>, EditConscien: <#T##Int16#>, EditNeuro: <#T##Int16#>)
     }
 }
+
 */

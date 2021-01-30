@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Charts
 
 struct big5SlideView: View {
     @ObservedObject var personalData: PersonalDataEntity
@@ -124,18 +125,18 @@ struct big5SlideView: View {
                                                self.personalData.big5NotOpen = Int16(num)
                                            case 8:
                                                self.personalData.big5NotConscien = Int16(num)
-                                           case 9: // 最後の質問が終わったらそのままViewを閉じる
+                                           case 9: // 最後の質問が終わったらそのまま数値を計算する
                                                self.personalData.big5NotNeuro = Int16(num)
-                                               
                                                // 全ての値を計算する
                                                self.personalData.big5Agree -= self.personalData.big5NotAgree
                                                self.personalData.big5Extra -= self.personalData.big5NotExtra
                                                self.personalData.big5Open -= self.personalData.big5NotOpen
                                                self.personalData.big5Conscien -= self.personalData.big5NotConscien
                                                self.personalData.big5Neuro -= self.personalData.big5NotNeuro
-                                           
+                                            
                                                // Viewを閉じる
                                                self.showbig5SlideView = false
+                                               self.showSlideNum = 0
                                            // defaultは発生しない(1ページ目に戻るように設定しておく)
                                            default:
                                                self.showSlideNum = 0
@@ -156,6 +157,7 @@ struct big5SlideView: View {
                           } //:ForEach
                        } //:HStack
                        .scaleEffect(showAnimation ? 1 : 0)
+                    
    //MARK: -Line
                        HStack {
                            Text("1.当てはまらない")
@@ -200,12 +202,14 @@ struct big5SlideView: View {
    } //:body
 } //:view
 
-/*
+
 
 struct big5SlideView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     
+    static var previews: some View {
+
+        ContentView(showNewData: .constant(false))
+            .environment(\.managedObjectContext, PersistentController.shared.container.viewContext)
     }
 }
-*/
+

@@ -13,7 +13,7 @@ struct ContentView: View {
     @Binding var showNewData: Bool
     @Environment(\.managedObjectContext) private var viewContext
     
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \PersonalDataEntity.name,
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \PersonalDataEntity.kana,
              ascending: true)],
          animation: .default
     )
@@ -94,10 +94,12 @@ struct ContentView: View {
 
 //MARK: -preview
 
-/*
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        
+        ContentView(showNewData: .constant(false))
+            .environment(\.managedObjectContext, PersistentController.shared.container.viewContext)
     }
 }
-*/
+

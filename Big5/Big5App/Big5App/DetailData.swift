@@ -13,6 +13,9 @@ struct DetailData: View {
     // 保存処理に必要なコンテキスト
     @Environment(\.managedObjectContext) private var viewContext
     
+    // Viewを閉じるための変数
+    @Environment(\.presentationMode) var presentationMode
+    
     // 表示するSheet判定用の変数
     @State var showEditSheet = false
     @State var showbig5SlideView = false
@@ -174,6 +177,7 @@ struct DetailData: View {
                     }.foregroundColor(.white)
                 }.onTapGesture {
                     deleteData()
+                    self.presentationMode.wrappedValue.dismiss()
                 } //:onTapGesture
                 Spacer()
             } //:HsStack

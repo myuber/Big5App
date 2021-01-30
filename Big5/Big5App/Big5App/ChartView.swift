@@ -118,6 +118,6 @@ struct ChartView_Previews: PreviewProvider {
                             RadarChartDataEntry(value: 1),
                             RadarChartDataEntry(value: -3),
                             RadarChartDataEntry(value: 0),
-                            RadarChartDataEntry(value: 4)])
+                            RadarChartDataEntry(value: -4)])
     }
 }
