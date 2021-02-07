@@ -210,10 +210,10 @@ struct EditData: View {
                 ZStack {
                     Capsule()
                         .fill(Color.DeleteGradient)
-                        .frame(width:150, height: 40)
+                        .frame(width:100, height: 40)
                     HStack{
                         Image(systemName: "minus.circle.fill")
-                        Text("キャンセル").font(.headline)
+                        Text("削除").font(.headline)
                     }.foregroundColor(.white)
                 }.onTapGesture {
                     self.deleteData()

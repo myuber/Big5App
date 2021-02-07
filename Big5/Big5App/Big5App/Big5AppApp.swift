@@ -10,6 +10,7 @@ import SwiftUI
 @main
 struct Big5AppApp: App {
     @State var showNewData = false
+    @State var showQuickMemo = false
     let persistentContainer = PersistentController.shared
     
     @Environment(\.managedObjectContext) var viewContext
@@ -24,6 +25,7 @@ struct Big5AppApp: App {
                         .environment(\.managedObjectContext, persistentContainer.container.viewContext)
                     
                     Spacer().frame(height: 30)
+                    
         //MARK: -admob
                     // Admob用のフレームを用意
                     Rectangle().frame(width: UIScreen.screenWidth, height:50)

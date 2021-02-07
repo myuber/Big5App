@@ -11,27 +11,45 @@ import SwiftUI
 
 struct ContentView: View {
     @Binding var showNewData: Bool
+    
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \PersonalDataEntity.kana,
              ascending: true)],
          animation: .default
     )
-    
     private var personalData: FetchedResults<PersonalDataEntity>
     
+    
+    @State var naviData: PersonalDataEntity
+        
+    // NavigationLinkのisActiveに使用するフラグ
+    @State var DetailFlg: Bool = false
+    @State var QuickFlg: Bool = false
+    
+    @State var showQuickMemo: Bool = false
     
     var body: some View {
         NavigationView {
             VStack {
                 List {
                     ForEach(personalData) { data in
-                        NavigationLink(destination: DetailData(personalData: data)) {
-                            HStack {
-                                Text(data.name ?? "未設定")
-                                Text(data.tel ?? "未設定")
-                            } //:HStack
-                        } //:NavigationLink
+                        HStack {
+                        Button(action: {
+                            self.DetailFlg = true
+                            self.naviData = data
+                        }) {
+                            Text(data.name ?? "")
+                        }
+                        Spacer()
+                        Button(action: {
+                            self.QuickFlg = true
+                            self.naviData = data
+                        }) {
+                            Text("メモを追加")
+                        }
+                        } //:HStack
+                        
                     } //:ForEach
                 } //:List
                 HStack{
@@ -47,10 +65,19 @@ struct ContentView: View {
                     
                     Spacer().frame(width: 30)
                 } //:HStack
+                
+                NavigationLink(destination: DetailData(personalData: naviData), isActive: $DetailFlg) {
+                    EmptyView()
+                }
+                NavigationLink(destination: QuickMemo(personalData: naviData), isActive: $QuickFlg) {
+                    EmptyView()
+                }
+                
             } //:VStack
         } //:NavigationView
         .navigationBarTitle("一覧表示")
     } //:body
+    
     
     
     //MARK: -function
@@ -102,4 +129,5 @@ struct ContentView_Previews: PreviewProvider {
             .environment(\.managedObjectContext, PersistentController.shared.container.viewContext)
     }
 }
+
 
