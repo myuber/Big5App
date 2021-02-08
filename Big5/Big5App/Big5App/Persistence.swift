@@ -12,6 +12,24 @@ struct PersistentController {
     
     static let shared = PersistentController()
     
+    static var preview: PersistentController = {
+        let result = PersistentController()
+        let viewContext = result.container.viewContext
+        /// プレビュー用初期値の設定
+        for i in 0..<5 {
+            let newItem = PersonalDataEntity(context: viewContext)
+            newItem.name = String(i)
+        }
+        do {
+            try viewContext.save()
+        } catch {
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
+        return result
+        }()
+    
+    
     let container: NSPersistentContainer
     
     
@@ -25,3 +43,5 @@ struct PersistentController {
         }
     }
 }
+
+

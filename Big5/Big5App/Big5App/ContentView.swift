@@ -21,7 +21,6 @@ struct ContentView: View {
     private var personalData: FetchedResults<PersonalDataEntity>
     
     
-    @State var naviData: PersonalDataEntity
         
     // NavigationLinkのisActiveに使用するフラグ
     @State var DetailFlg: Bool = false
@@ -29,26 +28,30 @@ struct ContentView: View {
     
     @State var showQuickMemo: Bool = false
     
+    @State var naviNum:Int = 0
+        
     var body: some View {
         NavigationView {
             VStack {
                 List {
-                    ForEach(personalData) { data in
+                    ForEach(0..<personalData.count) { dataNum in
                         HStack {
-                        Button(action: {
-                            self.DetailFlg = true
-                            self.naviData = data
-                        }) {
-                            Text(data.name ?? "")
-                        }
-                        Spacer()
-                        Button(action: {
-                            self.QuickFlg = true
-                            self.naviData = data
-                        }) {
+                            Text(personalData[dataNum].name ?? "")
+                                .onTapGesture {
+                                    self.DetailFlg = true
+                                    self.naviNum = dataNum
+                                }
+                            
                             Text("メモを追加")
-                        }
+                                .onTapGesture {
+                                    self.QuickFlg = true
+                                    self.naviNum = dataNum
+                                }
                         } //:HStack
+                            .onLongPressGesture {
+                                self.QuickFlg = true
+                                self.naviNum = dataNum
+                            }
                         
                     } //:ForEach
                 } //:List
@@ -66,10 +69,10 @@ struct ContentView: View {
                     Spacer().frame(width: 30)
                 } //:HStack
                 
-                NavigationLink(destination: DetailData(personalData: naviData), isActive: $DetailFlg) {
+                NavigationLink(destination: DetailData(personalData: personalData[naviNum]), isActive: $DetailFlg) {
                     EmptyView()
                 }
-                NavigationLink(destination: QuickMemo(personalData: naviData), isActive: $QuickFlg) {
+                NavigationLink(destination: QuickMemo(personalData: personalData[naviNum]), isActive: $QuickFlg) {
                     EmptyView()
                 }
                 
@@ -126,7 +129,7 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         
         ContentView(showNewData: .constant(false))
-            .environment(\.managedObjectContext, PersistentController.shared.container.viewContext)
+            .environment(\.managedObjectContext, PersistentController.preview.container.viewContext)
     }
 }
 
