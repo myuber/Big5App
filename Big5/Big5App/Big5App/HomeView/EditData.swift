@@ -46,11 +46,7 @@ struct EditData: View {
     var body: some View {
         Form {
             VStack {
-                HStack {
-                    Spacer()
-                    Image("image01").resizable().frame(width: 100, height: 100)
-                    Spacer()
-                } //:HStack
+                IconView(personalData: self.personalData)
             } //:VStack
             //MARK: -Chart
             Section {
