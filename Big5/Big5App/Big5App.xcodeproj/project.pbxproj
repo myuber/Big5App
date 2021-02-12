@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46A0A1EB25D1EF8500BDCD4A /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A0A1EA25D1EF8500BDCD4A /* ImagePickerView.swift */; };
+		46A0A1EE25D1F16D00BDCD4A /* Coodinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A0A1ED25D1F16D00BDCD4A /* Coodinator.swift */; };
+		46A0A1F125D2C4B600BDCD4A /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A0A1F025D2C4B600BDCD4A /* IconView.swift */; };
 		46D93B1A25B932330031DD92 /* Big5AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D93B1925B932330031DD92 /* Big5AppApp.swift */; };
 		46D93B1C25B932330031DD92 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D93B1B25B932330031DD92 /* ContentView.swift */; };
 		46D93B1E25B932360031DD92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46D93B1D25B932360031DD92 /* Assets.xcassets */; };
@@ -30,6 +33,9 @@
 
 /* Begin PBXFileReference section */
 		3C1518D77AF8AFBA41E4EC63 /* Pods-Big5App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big5App.debug.xcconfig"; path = "Target Support Files/Pods-Big5App/Pods-Big5App.debug.xcconfig"; sourceTree = "<group>"; };
+		46A0A1EA25D1EF8500BDCD4A /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
+		46A0A1ED25D1F16D00BDCD4A /* Coodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coodinator.swift; sourceTree = "<group>"; };
+		46A0A1F025D2C4B600BDCD4A /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
 		46D93B1625B932330031DD92 /* Big5App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Big5App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46D93B1925B932330031DD92 /* Big5AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Big5AppApp.swift; sourceTree = "<group>"; };
 		46D93B1B25B932330031DD92 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -66,6 +72,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46A0A1E925D1EF3B00BDCD4A /* CameraModel */ = {
+			isa = PBXGroup;
+			children = (
+				46A0A1EA25D1EF8500BDCD4A /* ImagePickerView.swift */,
+				46A0A1ED25D1F16D00BDCD4A /* Coodinator.swift */,
+			);
+			path = CameraModel;
+			sourceTree = "<group>";
+		};
+		46A0A1F325D2C4D200BDCD4A /* Big5View */ = {
+			isa = PBXGroup;
+			children = (
+				46D93B5225BDADD30031DD92 /* big5QuesCard.swift */,
+				46D93B5525BDAE2C0031DD92 /* big5SlideView.swift */,
+				46D93B4B25BD9D0A0031DD92 /* big5Edit.swift */,
+			);
+			path = Big5View;
+			sourceTree = "<group>";
+		};
+		46A0A1F425D2C4F000BDCD4A /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				46D93B4625BD9BE20031DD92 /* ChartView.swift */,
+				46D93B2D25B934390031DD92 /* Persistence.swift */,
+				46D93B5825BDAE840031DD92 /* ObservedClass.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		46A0A1F525D2C51100BDCD4A /* HomeView */ = {
+			isa = PBXGroup;
+			children = (
+				46D93B1925B932330031DD92 /* Big5AppApp.swift */,
+				46D93B1B25B932330031DD92 /* ContentView.swift */,
+				46D93B3825BCFB030031DD92 /* NewData.swift */,
+				46D93B5C25BDB30A0031DD92 /* DetailData.swift */,
+				46D93B3025BC57800031DD92 /* EditData.swift */,
+				46D93B6225C6FBD80031DD92 /* QuickMemo.swift */,
+				46A0A1F025D2C4B600BDCD4A /* IconView.swift */,
+			);
+			path = HomeView;
+			sourceTree = "<group>";
+		};
 		46D93B0D25B932330031DD92 = {
 			isa = PBXGroup;
 			children = (
@@ -88,18 +137,10 @@
 			isa = PBXGroup;
 			children = (
 				46D93B3325BCDC960031DD92 /* Extension */,
-				46D93B1925B932330031DD92 /* Big5AppApp.swift */,
-				46D93B1B25B932330031DD92 /* ContentView.swift */,
-				46D93B5C25BDB30A0031DD92 /* DetailData.swift */,
-				46D93B3825BCFB030031DD92 /* NewData.swift */,
-				46D93B3025BC57800031DD92 /* EditData.swift */,
-				46D93B6225C6FBD80031DD92 /* QuickMemo.swift */,
-				46D93B5225BDADD30031DD92 /* big5QuesCard.swift */,
-				46D93B5525BDAE2C0031DD92 /* big5SlideView.swift */,
-				46D93B4B25BD9D0A0031DD92 /* big5Edit.swift */,
-				46D93B5825BDAE840031DD92 /* ObservedClass.swift */,
-				46D93B4625BD9BE20031DD92 /* ChartView.swift */,
-				46D93B2D25B934390031DD92 /* Persistence.swift */,
+				46A0A1F525D2C51100BDCD4A /* HomeView */,
+				46A0A1F325D2C4D200BDCD4A /* Big5View */,
+				46A0A1E925D1EF3B00BDCD4A /* CameraModel */,
+				46A0A1F425D2C4F000BDCD4A /* Config */,
 				46D93B2925B932860031DD92 /* Big5App.xcdatamodeld */,
 				46D93B1D25B932360031DD92 /* Assets.xcassets */,
 				46D93B2225B932360031DD92 /* Info.plist */,
@@ -259,13 +300,16 @@
 				46D93B3925BCFB030031DD92 /* NewData.swift in Sources */,
 				46D93B2B25B932860031DD92 /* Big5App.xcdatamodeld in Sources */,
 				46D93B5D25BDB30A0031DD92 /* DetailData.swift in Sources */,
+				46A0A1EB25D1EF8500BDCD4A /* ImagePickerView.swift in Sources */,
 				46D93B3525BCDCAD0031DD92 /* Binding+Extension.swift in Sources */,
+				46A0A1EE25D1F16D00BDCD4A /* Coodinator.swift in Sources */,
 				46D93B5625BDAE2C0031DD92 /* big5SlideView.swift in Sources */,
 				46D93B4725BD9BE20031DD92 /* ChartView.swift in Sources */,
 				46D93B5325BDADD30031DD92 /* big5QuesCard.swift in Sources */,
 				46D93B2E25B934390031DD92 /* Persistence.swift in Sources */,
 				46D93B1C25B932330031DD92 /* ContentView.swift in Sources */,
 				46D93B5925BDAE840031DD92 /* ObservedClass.swift in Sources */,
+				46A0A1F125D2C4B600BDCD4A /* IconView.swift in Sources */,
 				46D93B4025BD761A0031DD92 /* CGFloat+Extension.swift in Sources */,
 				46D93B3125BC57800031DD92 /* EditData.swift in Sources */,
 				46D93B1A25B932330031DD92 /* Big5AppApp.swift in Sources */,

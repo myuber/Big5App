@@ -24,7 +24,6 @@ struct ContentView: View {
     private var personalData: FetchedResults<PersonalDataEntity>
     
     
-        
     // NavigationLinkのisActiveに使用するフラグ
     @State var DetailFlg: Bool = false
     @State var QuickFlg: Bool = false
