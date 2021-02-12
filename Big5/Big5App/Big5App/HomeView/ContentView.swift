@@ -39,7 +39,7 @@ struct ContentView: View {
             VStack {
                 List {
                     // Entityデータの数だけループ処理
-                    ForEach(0..<personalData.count) { dataNum in
+                    ForEach(0..<personalData.count, id: \.self) { dataNum in
                         HStack {
                             // 名前をタップするとDetailDataを開く
                             Text(personalData[dataNum].name ?? "")
@@ -80,11 +80,15 @@ struct ContentView: View {
                 } //:HStack
                 
 //MARK: -NavigationLink
-                NavigationLink(destination: DetailData(personalData: personalData[naviNum]), isActive: $DetailFlg) {
-                    EmptyView()
-                }
-                NavigationLink(destination: QuickMemo(personalData: personalData[naviNum]), isActive: $QuickFlg) {
-                    EmptyView()
+                if personalData.count > 0 {
+                    NavigationLink(destination: DetailData(personalData: personalData[naviNum]), isActive: $DetailFlg) {
+                        EmptyView()
+                    }
+                    NavigationLink(destination: QuickMemo(personalData: personalData[naviNum]), isActive: $QuickFlg) {
+                        EmptyView()
+                    }
+                } else {
+                    Text("no Data")
                 }
                 
             } //:VStack
