@@ -17,6 +17,15 @@ class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerContro
     // 保存処理に必要なコンテキスト
     @Environment(\.managedObjectContext) private var viewContext
     
+    fileprivate func saveContext() {
+        do {
+            try viewContext.save()
+        } catch {
+            let error = error as NSError
+            fatalError("Unresolved Error: \(error)")
+        }
+    }
+    
     init(picker: ImagePickerView) {
         self.picker = picker
     }
@@ -33,6 +42,7 @@ class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerContro
         let personalData = PersonalDataEntity(context: viewContext)
         let imageData = UIImage.pngData(selectedImage)
         personalData.icon = imageData()
+        self.saveContext()
                 
         self.picker.isPresented.wrappedValue.dismiss()
     }

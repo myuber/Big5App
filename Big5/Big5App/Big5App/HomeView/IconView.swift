@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct IconView: View {
+    @ObservedObject var personalData: PersonalDataEntity
+    // 保存処理に必要なコンテキスト
+    @Environment(\.managedObjectContext) private var viewContext
     
     @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @State private var selectedImage: UIImage?
@@ -44,6 +47,7 @@ struct IconView: View {
 
 struct IconView_Previews: PreviewProvider {
     static var previews: some View {
-        IconView()
+        ContentView(showNewData: .constant(false))
+            .environment(\.managedObjectContext, PersistentController.preview.container.viewContext)
     }
 }

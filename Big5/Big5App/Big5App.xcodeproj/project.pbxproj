@@ -33,9 +33,11 @@
 
 /* Begin PBXFileReference section */
 		3C1518D77AF8AFBA41E4EC63 /* Pods-Big5App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big5App.debug.xcconfig"; path = "Target Support Files/Pods-Big5App/Pods-Big5App.debug.xcconfig"; sourceTree = "<group>"; };
+		4612E87125D61E470085F7FE /* toVer2.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; name = toVer2.xcmappingmodel; path = /Users/gari/pyworks/big5App/iOS_App/Big5/Big5App/Big5App/Config/toVer2.xcmappingmodel; sourceTree = "<absolute>"; };
 		46A0A1EA25D1EF8500BDCD4A /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		46A0A1ED25D1F16D00BDCD4A /* Coodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coodinator.swift; sourceTree = "<group>"; };
 		46A0A1F025D2C4B600BDCD4A /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
+		46A1530025D61A92006AE41E /* Big5App_ver2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Big5App_ver2.xcdatamodel; sourceTree = "<group>"; };
 		46D93B1625B932330031DD92 /* Big5App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Big5App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46D93B1925B932330031DD92 /* Big5AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Big5AppApp.swift; sourceTree = "<group>"; };
 		46D93B1B25B932330031DD92 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 		46A0A1F425D2C4F000BDCD4A /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				4612E87125D61E470085F7FE /* toVer2.xcmappingmodel */,
 				46D93B4625BD9BE20031DD92 /* ChartView.swift */,
 				46D93B2D25B934390031DD92 /* Persistence.swift */,
 				46D93B5825BDAE840031DD92 /* ObservedClass.swift */,
@@ -511,9 +514,10 @@
 		46D93B2925B932860031DD92 /* Big5App.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				46A1530025D61A92006AE41E /* Big5App_ver2.xcdatamodel */,
 				46D93B2A25B932860031DD92 /* Big5App.xcdatamodel */,
 			);
-			currentVersion = 46D93B2A25B932860031DD92 /* Big5App.xcdatamodel */;
+			currentVersion = 46A1530025D61A92006AE41E /* Big5App_ver2.xcdatamodel */;
 			path = Big5App.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

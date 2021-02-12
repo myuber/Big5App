@@ -46,7 +46,7 @@ struct EditData: View {
     var body: some View {
         Form {
             VStack {
-                IconView()
+                IconView(personalData: self.personalData)
             } //:VStack
             //MARK: -Chart
             Section {

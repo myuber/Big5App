@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/gari/pyworks/big5App/iOS_App/Big5/Big5App/Big5App/Config/toVer2.xcmappingmodel">
+   </FileRef>
+   <FileRef
       location = "group:Big5App.xcodeproj">
    </FileRef>
    <FileRef
