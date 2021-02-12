@@ -57,7 +57,12 @@ struct DetailData: View {
             VStack {
                 HStack {
                     Spacer()
-                    Image("image01").resizable().frame(width: 100, height: 100)
+                    if personalData.icon != nil {
+                        let image = UIImage(data: personalData.icon!)
+                        Image(uiImage: image!).resizable().frame(width: 100, height: 100)
+                    } else {
+                        Image("image01").resizable().frame(width: 100, height: 100)
+                    }
                     Spacer()
                 }
             }

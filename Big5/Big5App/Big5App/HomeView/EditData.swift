@@ -47,6 +47,7 @@ struct EditData: View {
         Form {
             VStack {
                 IconView(personalData: self.personalData)
+                    .environment(\.managedObjectContext, self.viewContext)
             } //:VStack
             //MARK: -Chart
             Section {

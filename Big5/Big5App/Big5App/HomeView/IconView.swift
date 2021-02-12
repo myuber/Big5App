@@ -19,8 +19,9 @@ struct IconView: View {
     var body: some View {
         HStack {
             Spacer()
-            if selectedImage != nil {
-                Image(uiImage: selectedImage!)
+            if personalData.icon != nil {
+                let image = UIImage(data: personalData.icon!)
+                Image(uiImage: image!)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .clipShape(Circle())
@@ -39,7 +40,7 @@ struct IconView: View {
             self.isImagePickerDisplay.toggle()
         }
         .sheet(isPresented: self.$isImagePickerDisplay) {
-            ImagePickerView(selectedImage: self.$selectedImage, sourceType: self.sourceType)
+            ImagePickerView(personalData: self.personalData, selectedImage: self.$selectedImage, sourceType: self.sourceType)
         }
         
     } //:body
