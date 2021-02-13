@@ -41,13 +41,34 @@ struct ContentView: View {
                     // Entityデータの数だけループ処理
                     ForEach(0..<personalData.count, id: \.self) { dataNum in
                         HStack {
-                            // 名前をタップするとDetailDataを開く
-                            Text(personalData[dataNum].name ?? "")
+                            Group {
+                                // iconが登録されていなければpersonを表示
+                                if personalData[dataNum].icon != nil {
+                                    let image = UIImage(data: personalData[dataNum].icon!)
+                                    Image(uiImage: image!)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .clipShape(Circle())
+                                        .frame(width: 30, height: 30)
+                                } else {
+                                    Image(systemName: "person")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .clipShape(Circle())
+                                        .frame(width: 30, height: 30)
+                                }
+                                
+                                // 名前をタップするとDetailDataを開く
+                                Text(personalData[dataNum].name ?? "no name")
+                                    .frame(width: 100)
+                                    .background(Color.blue)
+                            } //:Group
                                 .onTapGesture {
                                     self.DetailFlg = true
                                     self.naviNum = dataNum
                                 }
-                            
+                                
+                            Spacer()
                             // タップするとQuickMemoを開く
                             Text("メモを追加")
                                 .onTapGesture {

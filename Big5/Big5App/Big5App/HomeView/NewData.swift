@@ -199,7 +199,7 @@ struct NewData: View {
 struct NewData_Previews: PreviewProvider {
     static var previews: some View {
         NewData(showNewData: .constant(true))
-            .environment(\.managedObjectContext, PersistentController.shared.container.viewContext)
+            .environment(\.managedObjectContext, PersistentController.preview.container.viewContext)
     }
 }
 
