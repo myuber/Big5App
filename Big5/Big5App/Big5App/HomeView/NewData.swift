@@ -91,7 +91,7 @@ struct NewData: View {
             Form {
                 HStack {
                     Spacer()
-                    Image("image01").resizable().frame(width: 100, height: 100)
+                    Image(systemName: "person").resizable().frame(width: 100, height: 100)
                     Spacer()
                 }
                 //----------- 基本情報 -----------

@@ -51,59 +51,66 @@ struct EditData: View {
             } //:VStack
             //MARK: -Chart
             Section {
+                // 1度もBig5診断をしていない場合は、notの値が0なので分岐
+                // 診断前の場合は診断ボタンを表示、診断後はChartViewを表示
+                if personalData.big5NotAgree != 0 {
+                    HStack {
+                        Spacer()
+                        VStack {
+                            ChartView(entries: [
+                                RadarChartDataEntry(value: Double(personalData.big5Agree)),
+                                RadarChartDataEntry(value: Double(personalData.big5Extra)),
+                                RadarChartDataEntry(value: Double(personalData.big5Open)),
+                                RadarChartDataEntry(value: Double(personalData.big5Conscien)),
+                                RadarChartDataEntry(value: Double(personalData.big5Neuro))
+                            ])
+                            .frame(width: 250, height: 250)
+                            .onTapGesture {
+                                self.showBig5EditSheet = true
+                            }.sheet(isPresented: $showBig5EditSheet) {
+                                big5Edit(personalData: personalData,
+                                         EditAgree: personalData.big5Agree,
+                                         EditExtra: personalData.big5Extra,
+                                         EditOpen: personalData.big5Open,
+                                         EditConscien: personalData.big5Conscien,
+                                         EditNeuro: personalData.big5Neuro)
+                                    .environment(\.managedObjectContext,
+                                        persistentContainer.container.viewContext)
+                            } //:sheet
+                            Text("グラフをタップして数値を変更")
+                        } //:VStack
+                        Spacer()
+                    } //:HStack
                 
-                HStack {
-                    Spacer()
-                    ChartView(entries: [
-                        RadarChartDataEntry(value: Double(personalData.big5Agree)),
-                        RadarChartDataEntry(value: Double(personalData.big5Extra)),
-                        RadarChartDataEntry(value: Double(personalData.big5Open)),
-                        RadarChartDataEntry(value: Double(personalData.big5Conscien)),
-                        RadarChartDataEntry(value: Double(personalData.big5Neuro))
-                    ])
-                    .frame(width: 250, height: 250)
-                    .onTapGesture {
-                        self.showBig5EditSheet = true
-                    }.sheet(isPresented: $showBig5EditSheet) {
-                        big5Edit(personalData: personalData,
-                                 EditAgree: personalData.big5Agree,
-                                 EditExtra: personalData.big5Extra,
-                                 EditOpen: personalData.big5Open,
-                                 EditConscien: personalData.big5Conscien,
-                                 EditNeuro: personalData.big5Neuro)
-                            .environment(\.managedObjectContext,
-                                persistentContainer.container.viewContext)
-                    } //:sheet
-                    Spacer()
-                } //:HStack
-                
-                HStack{
-                    Spacer()
-                    ZStack {
-                        Capsule()
-                            .fill(Color.diagonalGradient)
-                            .frame(width:200, height: 40)
-                        Text("Big5を登録する")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                    } //:ZStack
-                        .onTapGesture {
-                            // Big5を登録するときは,前データが残ってしまうのでデータをリセットする
-                            personalData.big5Agree = 0
-                            personalData.big5Extra = 0
-                            personalData.big5Open = 0
-                            personalData.big5Conscien = 0
-                            personalData.big5Neuro = 0
-                            personalData.big5NotAgree = 0
-                            personalData.big5NotExtra = 0
-                            personalData.big5NotOpen = 0
-                            personalData.big5NotConscien = 0
-                            personalData.big5NotNeuro = 0
-                            self.showbig5SlideView = true
-                    } //:onTapGesture
-                    Spacer()
-                } //:HStack
-                
+                } else {
+                    
+                    HStack{
+                        Spacer()
+                        ZStack {
+                            Capsule()
+                                .fill(Color.diagonalGradient)
+                                .frame(width:200, height: 40)
+                            Text("Big5を登録する")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                        } //:ZStack
+                            .onTapGesture {
+                                // Big5を登録するときは,前データが残ってしまうのでデータをリセットする
+                                personalData.big5Agree = 0
+                                personalData.big5Extra = 0
+                                personalData.big5Open = 0
+                                personalData.big5Conscien = 0
+                                personalData.big5Neuro = 0
+                                personalData.big5NotAgree = 0
+                                personalData.big5NotExtra = 0
+                                personalData.big5NotOpen = 0
+                                personalData.big5NotConscien = 0
+                                personalData.big5NotNeuro = 0
+                                self.showbig5SlideView = true
+                        } //:onTapGesture
+                        Spacer()
+                    } //:HStack
+                } //: if~else
                 
             } //:Section
             //MARK: -基本情報
