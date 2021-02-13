@@ -53,11 +53,22 @@ struct big5SlideView: View {
                        .fill(Color.white)
                        .frame(width: 120, height: 120)
 
-                   Image("image01")
-                       .resizable()
-                       .scaledToFill()
-                       .frame(width: 110, height: 110)
-                       .clipShape(Circle())
+                // iconが登録されていなければpersonを表示
+                if personalData.icon != nil {
+                    let image = UIImage(data: personalData.icon!)
+                    Image(uiImage: image!)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 110, height: 110)
+                        .clipShape(Circle())
+                        
+                } else {
+                    Image(systemName: "person")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 110, height: 110)
+                        .clipShape(Circle())
+                }
                } //: ZStack
                    .padding(.top, -60)
                    .scaleEffect(showAnimation ? 1 : 0)

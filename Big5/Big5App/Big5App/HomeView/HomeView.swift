@@ -24,8 +24,10 @@ struct HomeView: View {
                 Spacer().frame(height: 30)
                 
     //MARK: -admob
+                /*
                 // Admob用のフレームを用意
                 Rectangle().frame(width: UIScreen.screenWidth, height:50)
+                */
                 
             } //:VStack
 //MARK: -NewData

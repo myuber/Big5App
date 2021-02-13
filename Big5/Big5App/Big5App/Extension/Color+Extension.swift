@@ -11,6 +11,7 @@ extension Color {
 //MARK: -背景
     static let tPurple = Color(#colorLiteral(red: 0.8807707429, green: 0.7343443036, blue: 0.9914920926, alpha: 1))
     static let tSky = Color(#colorLiteral(red: 0.4479305744, green: 0.7902210355, blue: 0.9117385745, alpha: 1))
+    static let tOrange = Color(#colorLiteral(red: 0.9428747892, green: 0.6065384746, blue: 0.3297749758, alpha: 1))
     
     static let gradient = LinearGradient(gradient: Gradient(colors: [Color.tPurple, Color.tSky]),
     startPoint: .top,
