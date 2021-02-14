@@ -51,13 +51,20 @@ struct DetailData: View {
         let strBirthday = formatter.string(from: dt ?? Date())
         print(strBirthday)
 
+        // Formの背景設定を一度クリアにする
+        UITableView.appearance().backgroundColor = .clear
         
         return Form {
 //MARK: -chart
             VStack {
                 HStack {
                     Spacer()
-                    Image("image01").resizable().frame(width: 100, height: 100)
+                    if personalData.icon != nil {
+                        let image = UIImage(data: personalData.icon!)
+                        Image(uiImage: image!).resizable().frame(width: 100, height: 100)
+                    } else {
+                        Image(systemName: "person").resizable().frame(width: 100, height: 100)
+                    }
                     Spacer()
                 }
             }
@@ -183,14 +190,16 @@ struct DetailData: View {
             } //:HsStack
 //MARK: -保存ボタン
         } //:From
-            .frame(width: UIScreen.screenWidth) //375にしておくと、iPhon8でも対応できる
+            .frame(width: UIScreen.screenWidth)
+            .background(Color.tOrange)
     } //:body
 } //:view
 
-/*
+
 struct DetailData_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
-    }
+     ContentView(showNewData: .constant(false))
+         .environment(\.managedObjectContext, PersistentController.preview.container.viewContext)
+ }
 }
-*/
+

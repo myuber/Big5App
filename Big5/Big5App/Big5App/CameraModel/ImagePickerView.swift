@@ -12,6 +12,7 @@ import SwiftUI
 // UIViewControllerRepresentableプロトコルを確認する構造体を定義
 // UIViewControllerRepresentableはSwiftUIでUIKitを使用するのに役立つ
 struct ImagePickerView: UIViewControllerRepresentable {
+    @ObservedObject var personalData: PersonalDataEntity
     
     @Binding var selectedImage: UIImage?
     @Environment(\.presentationMode) var isPresented
@@ -33,7 +34,7 @@ struct ImagePickerView: UIViewControllerRepresentable {
     
     // この構造体とCoodinatorクラスを連携する関数
     func makeCoordinator() -> Coordinator {
-        return Coordinator(picker: self)
+        return Coordinator(picker: self, personalData: personalData)
     }
 }
 

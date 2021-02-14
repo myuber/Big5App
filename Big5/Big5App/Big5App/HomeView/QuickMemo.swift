@@ -48,11 +48,22 @@ struct QuickMemo: View {
 //MARK: -body
     var body: some View {
         VStack {
-            Image("image01")
-                .resizable()
-                .scaledToFill()
-                .frame(width: 60, height: 60)
-                .clipShape(Circle())
+            // iconが登録されていなければpersonを表示
+            if personalData.icon != nil {
+                let image = UIImage(data: personalData.icon!)
+                Image(uiImage: image!)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 60, height: 60)
+                    .clipShape(Circle())
+                    
+            } else {
+                Image(systemName: "person")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 60, height: 60)
+                    .clipShape(Circle())
+            }
             
             TextField("この人について情報を追加しよう", text: $inputText, onCommit:  {
                 addExplanation()

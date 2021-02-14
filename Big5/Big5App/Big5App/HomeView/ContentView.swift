@@ -32,62 +32,121 @@ struct ContentView: View {
     
     // 何番目のデータを開くか番号を格納する変数
     @State var naviNum:Int = 0
-        
+    
 //MARK: -body
     var body: some View {
         NavigationView {
-            VStack {
-                List {
-                    // Entityデータの数だけループ処理
-                    ForEach(0..<personalData.count) { dataNum in
+            ZStack {
+                Color.tOrange
+                    .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                VStack {
+                    VStack {
                         HStack {
-                            // 名前をタップするとDetailDataを開く
-                            Text(personalData[dataNum].name ?? "")
-                                .onTapGesture {
-                                    self.DetailFlg = true
-                                    self.naviNum = dataNum
-                                }
-                            
-                            // タップするとQuickMemoを開く
-                            Text("メモを追加")
-                                .onTapGesture {
-                                    self.QuickFlg = true
-                                    self.naviNum = dataNum
-                                }
-                        } //:HStack
-                            // 長押ししたら開く
-                            .onLongPressGesture {
-                                self.QuickFlg = true
-                                self.naviNum = dataNum
-                            } //:onLongPressGesture
+                            Spacer().frame(width: 20)
+                            Text("ひとメモ")
+                                .font(.largeTitle)
+                                .foregroundColor(.tOrange)
+                            Spacer()
+                        }.padding(.top, 20)
                         
-                    } //:ForEach
-                } //:List
-//MARK: -showNewData
-                // NewDataを開くアイコン
-                HStack{
-                    Spacer()
-                    Button(action: {
-                        self.showNewData = true
-                    }, label: {
-                        Image(systemName: "person.crop.circle.badge.plus")
-                            .resizable()
-                            .scaledToFill()             //アスペクト比を維持してリサイズする
-                            .frame(width: 50, height: 50)
-                    })
+                        ScrollView {
+                            // Entityデータの数だけループ処理
+                            ForEach(0..<personalData.count, id: \.self) { dataNum in
+                                HStack {
+                                    Group {
+                                        // iconが登録されていなければpersonを表示
+                                        if personalData[dataNum].icon != nil {
+                                            let image = UIImage(data: personalData[dataNum].icon!)
+                                            Image(uiImage: image!)
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .clipShape(Circle())
+                                                .frame(width: 25, height: 25)
+                                                
+                                        } else {
+                                            Image(systemName: "person")
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .clipShape(Circle())
+                                                .frame(width: 25, height: 25)
+                                        }
+                                        
+                                        // 名前をタップするとDetailDataを開く
+                                        Text(personalData[dataNum].name ?? "no name")
+                                            .foregroundColor(.black)
+                                            .frame(width: 100)
+                                            .padding(.leading, 10.0)
+                                    } //:Group
+                                        .padding(.leading, 5.0)
+                                        .onTapGesture {
+                                            self.DetailFlg = true
+                                            self.naviNum = dataNum
+                                        }
+                                        
+                                    Spacer()
+                                    // タップするとQuickMemoを開く
+                                    Image(systemName: "plus")
+                                        .foregroundColor(Color.gray)
+                                        .padding(.trailing, 10.0)
+                                        .onTapGesture {
+                                            self.QuickFlg = true
+                                            self.naviNum = dataNum
+                                        }
+                                    Spacer().frame(width: 10)
+                                }
+                                .padding(.vertical, 5.0) //:HStack
+                            
+                                    // 長押ししたら開く
+                                    .onLongPressGesture {
+                                        self.QuickFlg = true
+                                        self.naviNum = dataNum
+                                    } //:onLongPressGesture
+                                
+                            } //:ForEach
+                            .padding(.top, 10)
+                            
+                        } //:ScrollView
+                    } //:VStack
+                    .padding(.horizontal, 10.0)
+                    .background(Color.white)
+                    .cornerRadius(30)
+                    .padding(.all, 10.0)
+                    .frame(height: UIScreen.screenHeight / 2)
                     
-                    Spacer().frame(width: 30)
-                } //:HStack
-                
-//MARK: -NavigationLink
-                NavigationLink(destination: DetailData(personalData: personalData[naviNum]), isActive: $DetailFlg) {
-                    EmptyView()
+                    
+    //MARK: -showNewData
+                    // NewDataを開くアイコン
+                    HStack{
+                        Spacer()
+                        Button(action: {
+                            self.showNewData = true
+                        }, label: {
+                            Image(systemName: "person.crop.circle.badge.plus")
+                                .resizable()
+                                .scaledToFill()             //アスペクト比を維持してリサイズする
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(.white)
+                        })
+                        
+                        Spacer().frame(width: 30)
+                    } //:HStack
+                    .padding(.top, 10)
+                    
+    //MARK: -NavigationLink
+                    if personalData.count > 0 {
+                        NavigationLink(destination: DetailData(personalData: personalData[naviNum]), isActive: $DetailFlg) {
+                            EmptyView()
+                        }
+                        NavigationLink(destination: QuickMemo(personalData: personalData[naviNum]), isActive: $QuickFlg) {
+                            EmptyView()
+                        }
+                    } else {
+                        Text("no Data")
+                    }
+                    
                 }
-                NavigationLink(destination: QuickMemo(personalData: personalData[naviNum]), isActive: $QuickFlg) {
-                    EmptyView()
-                }
-                
-            } //:VStack
+                .padding(.horizontal, 4.0) //:VStack
+            } //:ZStack
         } //:NavigationView
         .navigationBarTitle("一覧表示")
     } //:body

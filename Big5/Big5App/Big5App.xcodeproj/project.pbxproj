@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4612E87425D64C1F0085F7FE /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4612E87325D64C1F0085F7FE /* HomeView.swift */; };
 		46A0A1EB25D1EF8500BDCD4A /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A0A1EA25D1EF8500BDCD4A /* ImagePickerView.swift */; };
 		46A0A1EE25D1F16D00BDCD4A /* Coodinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A0A1ED25D1F16D00BDCD4A /* Coodinator.swift */; };
 		46A0A1F125D2C4B600BDCD4A /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A0A1F025D2C4B600BDCD4A /* IconView.swift */; };
@@ -34,6 +35,7 @@
 /* Begin PBXFileReference section */
 		3C1518D77AF8AFBA41E4EC63 /* Pods-Big5App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Big5App.debug.xcconfig"; path = "Target Support Files/Pods-Big5App/Pods-Big5App.debug.xcconfig"; sourceTree = "<group>"; };
 		4612E87125D61E470085F7FE /* toVer2.xcmappingmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcmappingmodel; name = toVer2.xcmappingmodel; path = /Users/gari/pyworks/big5App/iOS_App/Big5/Big5App/Big5App/Config/toVer2.xcmappingmodel; sourceTree = "<absolute>"; };
+		4612E87325D64C1F0085F7FE /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		46A0A1EA25D1EF8500BDCD4A /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		46A0A1ED25D1F16D00BDCD4A /* Coodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coodinator.swift; sourceTree = "<group>"; };
 		46A0A1F025D2C4B600BDCD4A /* IconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				46D93B1925B932330031DD92 /* Big5AppApp.swift */,
+				4612E87325D64C1F0085F7FE /* HomeView.swift */,
 				46D93B1B25B932330031DD92 /* ContentView.swift */,
 				46D93B3825BCFB030031DD92 /* NewData.swift */,
 				46D93B5C25BDB30A0031DD92 /* DetailData.swift */,
@@ -313,6 +316,7 @@
 				46D93B1C25B932330031DD92 /* ContentView.swift in Sources */,
 				46D93B5925BDAE840031DD92 /* ObservedClass.swift in Sources */,
 				46A0A1F125D2C4B600BDCD4A /* IconView.swift in Sources */,
+				4612E87425D64C1F0085F7FE /* HomeView.swift in Sources */,
 				46D93B4025BD761A0031DD92 /* CGFloat+Extension.swift in Sources */,
 				46D93B3125BC57800031DD92 /* EditData.swift in Sources */,
 				46D93B1A25B932330031DD92 /* Big5AppApp.swift in Sources */,

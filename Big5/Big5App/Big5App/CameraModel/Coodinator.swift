@@ -13,7 +13,7 @@ import SwiftUI
 // NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegateを拡張している
 class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     var picker: ImagePickerView
-    
+    @ObservedObject var personalData: PersonalDataEntity
     // 保存処理に必要なコンテキスト
     @Environment(\.managedObjectContext) private var viewContext
     
@@ -21,13 +21,16 @@ class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerContro
         do {
             try viewContext.save()
         } catch {
+            print(#function, personalData.icon ?? ".icon が nil です")
             let error = error as NSError
-            fatalError("Unresolved Error: \(error)")
+            print(error.localizedDescription, "保存されていません")
+            // fatalError("Unresolved Error: \(error)")
         }
     }
     
-    init(picker: ImagePickerView) {
+    init(picker: ImagePickerView, personalData: PersonalDataEntity) {
         self.picker = picker
+        self.personalData = personalData
     }
     
     // このメソッドはUIImagePickerControllerDelegateから来ている
@@ -39,7 +42,7 @@ class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerContro
         self.picker.selectedImage = selectedImage
         
         // 画像をCoreDataへ保存
-        let personalData = PersonalDataEntity(context: viewContext)
+        //let personalData = PersonalDataEntity(context: viewContext)
         let imageData = UIImage.pngData(selectedImage)
         personalData.icon = imageData()
         self.saveContext()

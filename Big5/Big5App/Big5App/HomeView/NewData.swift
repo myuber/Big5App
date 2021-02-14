@@ -87,11 +87,14 @@ struct NewData: View {
     }
     
     var body: some View {
-        NavigationView {
+        // Formの背景設定を一度クリアにする
+        UITableView.appearance().backgroundColor = .clear
+        
+        return NavigationView {
             Form {
                 HStack {
                     Spacer()
-                    Image("image01").resizable().frame(width: 100, height: 100)
+                    Image(systemName: "person").resizable().frame(width: 100, height: 100)
                     Spacer()
                 }
                 //----------- 基本情報 -----------
@@ -182,7 +185,9 @@ struct NewData: View {
                     }
                     Spacer()
                 }
-            }.navigationBarTitle("情報の追加")
+            } //:Form
+            .background(Color.tOrange)
+            .navigationBarTitle("情報の追加")
             .navigationBarItems(trailing: Button(action: {
                 // 新しいEntityデータを作成する
                 addNewData()
@@ -191,15 +196,15 @@ struct NewData: View {
                 Text("追加")
             })
             .frame(width: 375) //375にしておくと、iPhon8でも対応できる
-        }
-    }
-}
+        } //:NavigationView
+    } //:body
+} //:view
 
 
 struct NewData_Previews: PreviewProvider {
     static var previews: some View {
         NewData(showNewData: .constant(true))
-            .environment(\.managedObjectContext, PersistentController.shared.container.viewContext)
+            .environment(\.managedObjectContext, PersistentController.preview.container.viewContext)
     }
 }
 
