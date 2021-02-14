@@ -76,6 +76,31 @@ struct big5SlideView: View {
                    VStack {
    //MARK: -BackButton
                        HStack{
+                        // キャンセルボタン
+                        ZStack {
+                            Capsule().fill(Color.red).frame(width: 150)
+                            HStack {
+                                Image(systemName: "multiply.circle")
+                                Text("診断をやめる").foregroundColor(.white)
+                            }
+                        }.padding(.leading, 10.0)
+                        .onTapGesture{
+                            // 全ての値をリセット
+                            self.personalData.big5Agree = 0
+                            self.personalData.big5Extra = 0
+                            self.personalData.big5Open = 0
+                            self.personalData.big5Conscien = 0
+                            self.personalData.big5Neuro = 0
+                            self.personalData.big5NotAgree = 0
+                            self.personalData.big5NotExtra = 0
+                            self.personalData.big5NotOpen = 0
+                            self.personalData.big5NotConscien = 0
+                            self.personalData.big5NotNeuro = 0
+                            // Viewを閉じる
+                            self.showbig5SlideView = false
+                            self.showSlideNum = 0
+                        }
+                        
                            Spacer()
                            Image(systemName: "arrowshape.turn.up.left")
                                .foregroundColor(Color.white)
@@ -85,7 +110,7 @@ struct big5SlideView: View {
                                    self.showSlideNum -= 1
                                }
                            }, label: {
-                               Text("戻る")
+                               Text("1つ戻る")
                                    .font(.headline)
                                    .fontWeight(.bold)
                                    .foregroundColor(Color.white)

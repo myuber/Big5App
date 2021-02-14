@@ -44,7 +44,11 @@ struct EditData: View {
     }
     
     var body: some View {
-        Form {
+        // Formの背景設定を一度クリアにする
+        UITableView.appearance().backgroundColor = .clear
+        
+        return VStack{
+            Form {
             VStack {
                 IconView(personalData: self.personalData)
                     .environment(\.managedObjectContext, self.viewContext)
@@ -53,7 +57,7 @@ struct EditData: View {
             Section {
                 // 1度もBig5診断をしていない場合は、notの値が0なので分岐
                 // 診断前の場合は診断ボタンを表示、診断後はChartViewを表示
-                if personalData.big5NotAgree != 0 {
+                if personalData.big5NotNeuro != 0 {
                     HStack {
                         Spacer()
                         VStack {
@@ -227,20 +231,24 @@ struct EditData: View {
                 Spacer()
             } //:HStack
         } //:Form
+        .background(Color.tOrange)
+        
         
         //MARK: -big5SlideView
         if showbig5SlideView {
             big5SlideView(personalData: personalData, showbig5SlideView: $showbig5SlideView)
         } //:if
+    }
         
     } //:body
 } //:view
 
-/*
+
 struct EditData_Previews: PreviewProvider {
         static var previews: some View {
-            big5Edit(personalData: <#T##PersonalDataEntity#>, EditAgree: <#T##Int16#>, EditExtra: <#T##Int16#>, EditOpen: <#T##Int16#>, EditConscien: <#T##Int16#>, EditNeuro: <#T##Int16#>)
-    }
+             ContentView(showNewData: .constant(false))
+                 .environment(\.managedObjectContext, PersistentController.preview.container.viewContext)
+        }
 }
 
-*/
+
