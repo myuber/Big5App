@@ -73,6 +73,7 @@ struct ContentView: View {
                                         
                                         // 名前をタップするとDetailDataを開く
                                         Text(personalData[dataNum].name ?? "no name")
+                                            .foregroundColor(.black)
                                             .frame(width: 100)
                                             .padding(.leading, 10.0)
                                     } //:Group

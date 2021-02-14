@@ -20,6 +20,7 @@ struct big5QuesCard: View {
                 .opacity(0.7)
             
             Text(QuestionWord)
+                .foregroundColor(.black)
                 .frame(width: CGFloat.cardWidth - 20, height: CGFloat.cardHeight)
         } //:ZStack
     }
