@@ -220,7 +220,7 @@ struct big5SlideView_Previews: PreviewProvider {
     static var previews: some View {
 
         ContentView(showNewData: .constant(false))
-            .environment(\.managedObjectContext, PersistentController.shared.container.viewContext)
+            .environment(\.managedObjectContext, PersistentController.preview.container.viewContext)
     }
 }
 
