@@ -75,15 +75,16 @@ struct big5SlideView: View {
                
                    VStack {
    //MARK: -BackButton
-                       HStack{
+                      HStack{
                         // キャンセルボタン
                         ZStack {
-                            Capsule().fill(Color.red).frame(width: 150)
+                            Capsule().fill(Color.red).frame(width: 150, height: 20)
                             HStack {
-                                Image(systemName: "multiply.circle")
+                                Image(systemName: "multiply.circle").foregroundColor(.white)
                                 Text("診断をやめる").foregroundColor(.white)
                             }
-                        }.padding(.leading, 10.0)
+                        } //:ZStack
+                        .padding(.leading, 10.0)
                         .onTapGesture{
                             // 全ての値をリセット
                             self.personalData.big5Agree = 0
@@ -99,7 +100,7 @@ struct big5SlideView: View {
                             // Viewを閉じる
                             self.showbig5SlideView = false
                             self.showSlideNum = 0
-                        }
+                        } //:onTapGesture
                         
                            Spacer()
                            Image(systemName: "arrowshape.turn.up.left")
@@ -116,9 +117,9 @@ struct big5SlideView: View {
                                    .foregroundColor(Color.white)
                                    .lineLimit(nil)
                            }) //:button
-                               .padding(.trailing, 20.0)
+                        Spacer().frame(width: 20)
                            
-                       }.frame(width: UIScreen.screenWidth)
+                       }.frame(width: UIScreen.screenWidth-20)
                        
    //MARK: - Card
                        // 質問文をカードのようにスライドで表示するView
@@ -205,25 +206,8 @@ struct big5SlideView: View {
                        } //: HStack
                        .padding(.top, 5)
                        .scaleEffect(showAnimation ? 1 : 0)
-                       
-                       VStack{
-                           HStack {
-                               Text(String(self.personalData.big5Agree))
-                               Text(String(self.personalData.big5Extra))
-                               Text(String(self.personalData.big5Open))
-                               Text(String(self.personalData.big5Conscien))
-                               Text(String(self.personalData.big5Neuro))
-                               
-                           }
-                           HStack {
-                               Text(String(self.personalData.big5NotAgree))
-                               Text(String(self.personalData.big5NotExtra))
-                               Text(String(self.personalData.big5NotOpen))
-                               Text(String(self.personalData.big5NotConscien))
-                               Text(String(self.personalData.big5NotNeuro))
-                               
-                           }
-                       } //:VStack
+                    
+                    Spacer().frame(height: 30)
                    } //:VStack
                } //:VStack
            } //:ZStack

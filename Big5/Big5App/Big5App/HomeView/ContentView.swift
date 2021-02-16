@@ -111,7 +111,7 @@ struct ContentView: View {
                     .background(Color.white)
                     .cornerRadius(30)
                     .padding(.all, 10.0)
-                    .frame(height: UIScreen.screenHeight / 2)
+                    .frame(height: UIScreen.screenHeight / 1.5)
                     
                     
     //MARK: -showNewData
@@ -131,6 +131,7 @@ struct ContentView: View {
                         Spacer().frame(width: 30)
                     } //:HStack
                     .padding(.top, 10)
+                    .padding(.bottom, 30)
                     
     //MARK: -NavigationLink
                     if personalData.count > 0 {

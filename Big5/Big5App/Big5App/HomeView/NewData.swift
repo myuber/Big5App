@@ -114,17 +114,6 @@ struct NewData: View {
                             .frame(width: 120, alignment: .leading)
                         TextField("ニックネーム", text: $nickname)
                     }
-                    HStack {
-                        Text("性別")
-                            .frame(width: 120, alignment: .leading)
-                        Picker(selection: $sex, label: Text("性別")){
-                            Text("男性").tag("男性")
-                            Text("女性").tag("女性")
-                            Text("その他").tag("その他")
-                        }
-                        .pickerStyle(SegmentedPickerStyle())
-                        .labelsHidden()
-                    }
                     DatePicker(selection: $birthday,
                                displayedComponents: .date,
                                label: {Text("誕生日")}
@@ -167,7 +156,7 @@ struct NewData: View {
                 }
                 //----------- メモ -----------
                 Section(header: Text("追加情報")) {
-                    TextField("最近話したことなどをメモしよう", text: $explanation)
+                    TextField("特徴や最近話したことなどをメモしよう", text: $explanation)
                 }
                 //----------- 登録ボタン -----------
                 HStack(alignment: .center) {

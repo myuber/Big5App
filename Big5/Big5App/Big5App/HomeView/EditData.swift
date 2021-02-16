@@ -81,6 +81,7 @@ struct EditData: View {
                                     .environment(\.managedObjectContext,
                                         persistentContainer.container.viewContext)
                             } //:sheet
+
                             Text("グラフをタップして数値を変更")
                         } //:VStack
                         Spacer()
@@ -94,7 +95,7 @@ struct EditData: View {
                             Capsule()
                                 .fill(Color.diagonalGradient)
                                 .frame(width:200, height: 40)
-                            Text("Big5を登録する")
+                            Text("Big5性格診断をする")
                                 .font(.headline)
                                 .foregroundColor(.white)
                         } //:ZStack
@@ -135,18 +136,7 @@ struct EditData: View {
                         .frame(width: 120, alignment: .leading)
                     TextField("ニックネーム", text: Binding($personalData.nickname, "new nickname"))
                 }
-                HStack {
-                    Text("性別")
-                        .frame(width: 120, alignment: .leading)
-                    Picker(selection: Binding($personalData.sex), label: Text("性別")){
-                        Text("男性").tag("男性")
-                        Text("女性").tag("女性")
-                        Text("その他").tag("その他")
-                    }
-                    .pickerStyle(SegmentedPickerStyle())
-                    .labelsHidden()
-                }
-
+                
                 DatePicker(selection: Binding($personalData.birthday, Date()),
                            displayedComponents: .date,
                            label: {Text("誕生日")}
@@ -191,7 +181,7 @@ struct EditData: View {
             }
             //MARK: -メモ
             Section(header: Text("追加情報")) {
-                TextField("最近話したことなどをメモしよう", text: Binding($personalData.explanation, "new explanation"))
+                TextField("特徴や最近話したことなどをメモしよう", text: Binding($personalData.explanation, "new explanation"))
                  
             }
            

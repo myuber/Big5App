@@ -61,9 +61,15 @@ struct DetailData: View {
                     Spacer()
                     if personalData.icon != nil {
                         let image = UIImage(data: personalData.icon!)
-                        Image(uiImage: image!).resizable().frame(width: 100, height: 100)
+                        Image(uiImage: image!)
+                            .resizable()
+                            .clipShape(Circle())
+                            .frame(width: 100, height: 100)
                     } else {
-                        Image(systemName: "person").resizable().frame(width: 100, height: 100)
+                        Image(systemName: "person")
+                            .resizable()
+                            .clipShape(Circle())
+                            .frame(width: 100, height: 100)
                     }
                     Spacer()
                 }
@@ -101,11 +107,6 @@ struct DetailData: View {
                     Text("ニックネーム")
                         .frame(width: 120, alignment: .leading)
                     Text(personalData.nickname ?? "no title")
-                }
-                HStack {
-                    Text("性別")
-                        .frame(width: 120, alignment: .leading)
-                    Text(personalData.sex ?? "no title")
                 }
 
                 HStack {
