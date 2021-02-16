@@ -24,6 +24,20 @@ struct EditData: View {
     
     // Big5Editを表示するSheet判定用の変数
     @State var showBig5EditSheet = false
+//MARK: -仮データ
+    @State private var newName: String = ""
+    @State private var newKana: String = ""
+    @State private var newNickname: String = ""
+    @State private var newBirthday: Date = Date()
+    @State private var newFrom: String = ""
+    @State private var newJob: String = ""
+    @State private var newLike: String = ""
+    @State private var newDislike: String = ""
+    @State private var newTel: String = ""
+    @State private var newMail: String = ""
+    @State private var newExplanetion: String = ""
+    
+//MARK: -func
     
     
     fileprivate func saveContext() {
@@ -43,7 +57,9 @@ struct EditData: View {
         }
     }
     
+//MARK: -body
     var body: some View {
+        
         // Formの背景設定を一度クリアにする
         UITableView.appearance().backgroundColor = .clear
         
@@ -123,21 +139,21 @@ struct EditData: View {
                 HStack {
                     Text("名前")
                         .frame(width: 120, alignment: .leading)
-                    TextField("お名前", text: Binding($personalData.name, "new name"))
+                    TextField("お名前", text: $newName)
                 }
                 HStack {
                     Text("フリガナ")
                         .frame(width: 120, alignment: .leading)
-                    TextField("フリガナ", text: Binding($personalData.kana, "new kana"))
+                    TextField("フリガナ", text: $newKana)
                 }
                 
                 HStack {
                     Text("ニックネーム")
                         .frame(width: 120, alignment: .leading)
-                    TextField("ニックネーム", text: Binding($personalData.nickname, "new nickname"))
+                    TextField("ニックネーム", text: $newNickname)
                 }
                 
-                DatePicker(selection: Binding($personalData.birthday, Date()),
+                DatePicker(selection: $newBirthday,
                            displayedComponents: .date,
                            label: {Text("誕生日")}
                 )
@@ -145,22 +161,22 @@ struct EditData: View {
                 HStack {
                     Text("出身地")
                         .frame(width: 120, alignment: .leading)
-                    TextField("〇〇県〇〇市", text: Binding($personalData.from, "new from"))
+                    TextField("〇〇県〇〇市", text: $newFrom)
                 }
                 HStack {
                     Text("職業")
                         .frame(width: 120, alignment: .leading)
-                    TextField("会社員", text: Binding($personalData.job, "new job"))
+                    TextField("会社員", text: $newJob)
                 }
                 HStack {
                     Text("好きなもの")
                         .frame(width: 120, alignment: .leading)
-                    TextField("好きなもの", text: Binding($personalData.like, "new like"))
+                    TextField("好きなもの", text: $newLike)
                 }
                 HStack {
                     Text("嫌いなもの")
                         .frame(width: 120, alignment: .leading)
-                    TextField("嫌いなもの", text: Binding($personalData.dislike, "new dislike"))
+                    TextField("嫌いなもの", text: $newDislike)
                 }
             } //:Section
             //MARK: -連絡先
@@ -170,19 +186,18 @@ struct EditData: View {
                 HStack {
                     Text("電話番号")
                         .frame(width: 120, alignment: .leading)
-                    TextField("000-0000-0000", text: Binding($personalData.tel, "new tel"))
+                    TextField("000-0000-0000", text: $newTel)
                         .keyboardType(.phonePad)
                 }
                 HStack {
                     Text("メール")
                         .frame(width: 120, alignment: .leading)
-                    TextField("xxxxxxxx@xxx.jp", text: Binding($personalData.mail, "new mail"))
+                    TextField("xxxxxxxx@xxx.jp", text: $newMail)
                 }
             }
             //MARK: -メモ
             Section(header: Text("追加情報")) {
-                TextField("特徴や最近話したことなどをメモしよう", text: Binding($personalData.explanation, "new explanation"))
-                 
+                TextField("特徴や最近話したことなどをメモしよう", text: $newExplanetion)
             }
            
             //MARK: -登録ボタン
@@ -198,6 +213,18 @@ struct EditData: View {
                         Text("保存").font(.headline)
                     }.foregroundColor(.white)
                 }.onTapGesture {
+                    personalData.name = self.newName
+                    personalData.kana = self.newKana
+                    personalData.nickname = self.newNickname
+                    personalData.birthday = self.newBirthday
+                    personalData.from = self.newFrom
+                    personalData.job = self.newJob
+                    personalData.like = self.newLike
+                    personalData.dislike = self.newDislike
+                    personalData.tel = self.newTel
+                    personalData.mail = self.newMail
+                    personalData.explanation = self.newExplanetion
+                    
                     self.saveContext()
                     self.presentationMode.wrappedValue.dismiss()
                 } //:onTapGesture
@@ -228,7 +255,42 @@ struct EditData: View {
         if showbig5SlideView {
             big5SlideView(personalData: personalData, showbig5SlideView: $showbig5SlideView)
         } //:if
-    }
+        }
+        .onAppear{
+            if personalData.name != nil {
+                self.newName = personalData.name!
+            }
+            if personalData.kana != nil {
+                self.newKana = personalData.kana!
+            }
+            if personalData.nickname != nil {
+                self.newNickname = personalData.nickname!
+            }
+            if personalData.birthday != nil {
+                self.newBirthday = personalData.birthday!
+            }
+            if personalData.from != nil {
+                self.newFrom = personalData.from!
+            }
+            if personalData.job != nil {
+                self.newJob = personalData.job!
+            }
+            if personalData.like != nil {
+                self.newLike = personalData.like!
+            }
+            if personalData.dislike != nil {
+                self.newDislike = personalData.dislike!
+            }
+            if personalData.tel != nil {
+                self.newTel = personalData.tel!
+            }
+            if personalData.mail != nil {
+                self.newMail = personalData.mail!
+            }
+            if personalData.explanation != nil {
+                self.newExplanetion = personalData.explanation!
+            }
+        }
         
     } //:body
 } //:view
