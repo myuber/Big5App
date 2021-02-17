@@ -14,6 +14,7 @@ struct NewData: View {
     // 保存処理に必要なコンテキスト
     @Environment(\.managedObjectContext) private var viewContext
     
+    let UUID: String =  NSUUID().uuidString
     @State var name: String = ""
     @State var kana: String = ""
     @State var nickname: String = ""
@@ -31,6 +32,7 @@ struct NewData: View {
     fileprivate func addNewData() {
         withAnimation {
             let newData = PersonalDataEntity(context: viewContext)
+            newData.id = self.UUID
             newData.name = self.name
             newData.kana = self.kana
             newData.nickname = self.nickname
