@@ -37,10 +37,12 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack {
+                //MARK: -背景
                 Color.tOrange
                     .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                 VStack {
                     VStack {
+                        //MARK: -タイトル
                         HStack {
                             Spacer().frame(width: 20)
                             Text("ひとメモ")
@@ -49,6 +51,7 @@ struct ContentView: View {
                             Spacer()
                         }.padding(.top, 20)
                         
+                        //MARK: -ScrollView
                         ScrollView {
                             // Entityデータの数だけループ処理
                             ForEach(0..<personalData.count, id: \.self) { dataNum in

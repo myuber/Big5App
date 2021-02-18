@@ -20,6 +20,7 @@ struct PersistentController {
             let newItem = PersonalDataEntity(context: viewContext)
             newItem.name = String(i)
         }
+        
         do {
             try viewContext.save()
         } catch {
