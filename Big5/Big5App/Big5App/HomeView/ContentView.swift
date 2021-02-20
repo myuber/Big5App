@@ -140,11 +140,20 @@ struct ContentView: View {
     //MARK: -NavigationLink
     
                     if personalData.count > 0 {
-                        NavigationLink(destination: DetailData(personalData: personalData[naviNum], DetailFlg: $DetailFlg), isActive: $DetailFlg) {
-                            EmptyView()
-                        }
-                        NavigationLink(destination: QuickMemo(personalData: personalData[naviNum]), isActive: $QuickFlg) {
-                            EmptyView()
+                        if personalData.count - 1 < naviNum {
+                            NavigationLink(destination: DetailData(personalData: personalData[naviNum-1], DetailFlg: $DetailFlg), isActive: $DetailFlg) {
+                                EmptyView()
+                            }
+                            NavigationLink(destination: QuickMemo(personalData: personalData[naviNum-1]), isActive: $QuickFlg) {
+                                EmptyView()
+                            }
+                        } else {
+                            NavigationLink(destination: DetailData(personalData: personalData[naviNum], DetailFlg: $DetailFlg), isActive: $DetailFlg) {
+                                EmptyView()
+                            }
+                            NavigationLink(destination: QuickMemo(personalData: personalData[naviNum]), isActive: $QuickFlg) {
+                                EmptyView()
+                            }
                         }
                     } else {
                         Text("no Data")
