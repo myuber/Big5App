@@ -13,13 +13,12 @@ struct DetailData: View {
     // 保存処理に必要なコンテキスト
     @Environment(\.managedObjectContext) private var viewContext
     
-    // Viewを閉じるための変数
-    @Environment(\.presentationMode) var presentationMode
-    
     // 表示するSheet判定用の変数
+    @Binding var DetailFlg: Bool
     @State var EditFlg = false
     @State var showbig5SlideView = false
 
+    
     fileprivate func saveContext() {
         do {
             try viewContext.save()
@@ -183,7 +182,7 @@ struct DetailData: View {
                         }.foregroundColor(.white)
                     }.onTapGesture {
                         deleteData()
-                        self.presentationMode.wrappedValue.dismiss()
+                        self.DetailFlg = false
                     } //:onTapGesture
                     Spacer()
                 } //:HsStack
@@ -192,7 +191,7 @@ struct DetailData: View {
                 .frame(width: UIScreen.screenWidth)
                 .background(Color.tOrange)
             NavigationLink(destination:
-                            EditData(personalData: self.personalData, showbig5SlideView: self.$showbig5SlideView)
+                            EditData(personalData: self.personalData, showbig5SlideView: self.$showbig5SlideView, DetailFlg: self.$DetailFlg)
                                 .environment(\.managedObjectContext, self.viewContext),
                            isActive: $EditFlg) {
                 EmptyView()

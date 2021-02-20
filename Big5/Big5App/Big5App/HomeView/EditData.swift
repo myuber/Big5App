@@ -20,6 +20,7 @@ struct EditData: View {
     
     // big5SlideViewを表示/非表示を切り替える変数
     @Binding var showbig5SlideView: Bool
+    @Binding var DetailFlg: Bool
     
     
     // Big5Editを表示するSheet判定用の変数
@@ -241,8 +242,9 @@ struct EditData: View {
                         Text("削除").font(.headline)
                     }.foregroundColor(.white)
                 }.onTapGesture {
+                   // self.presentationMode.wrappedValue.dismiss()
+                    self.DetailFlg = false
                     self.deleteData()
-                    self.presentationMode.wrappedValue.dismiss()
                 } //:onTapGesture
                 
                 Spacer()

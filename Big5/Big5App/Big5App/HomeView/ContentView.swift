@@ -39,7 +39,7 @@ struct ContentView: View {
             ZStack {
                 //MARK: -背景
                 Color.tOrange
-                    .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                    .edgesIgnoringSafeArea(.all)
                 VStack {
                     VStack {
                         //MARK: -タイトル
@@ -140,7 +140,7 @@ struct ContentView: View {
     //MARK: -NavigationLink
     
                     if personalData.count > 0 {
-                        NavigationLink(destination: DetailData(personalData: personalData[naviNum]), isActive: $DetailFlg) {
+                        NavigationLink(destination: DetailData(personalData: personalData[naviNum], DetailFlg: $DetailFlg), isActive: $DetailFlg) {
                             EmptyView()
                         }
                         NavigationLink(destination: QuickMemo(personalData: personalData[naviNum]), isActive: $QuickFlg) {
