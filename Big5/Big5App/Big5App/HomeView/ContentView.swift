@@ -17,7 +17,7 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \PersonalDataEntity.kana,
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \PersonalDataEntity.id,
              ascending: true)],
          animation: .default
     )
@@ -37,10 +37,12 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack {
+                //MARK: -背景
                 Color.tOrange
-                    .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                    .edgesIgnoringSafeArea(.all)
                 VStack {
                     VStack {
+                        //MARK: -タイトル
                         HStack {
                             Spacer().frame(width: 20)
                             Text("ひとメモ")
@@ -49,6 +51,7 @@ struct ContentView: View {
                             Spacer()
                         }.padding(.top, 20)
                         
+                        //MARK: -ScrollView
                         ScrollView {
                             // Entityデータの数だけループ処理
                             ForEach(0..<personalData.count, id: \.self) { dataNum in
@@ -93,7 +96,7 @@ struct ContentView: View {
                                             self.naviNum = dataNum
                                         }
                                     Spacer().frame(width: 10)
-                                }
+                                } //HStack
                                 .padding(.vertical, 5.0) //:HStack
                             
                                     // 長押ししたら開く
@@ -103,6 +106,7 @@ struct ContentView: View {
                                     } //:onLongPressGesture
                                 
                             } //:ForEach
+                            
                             .padding(.top, 10)
                             
                         } //:ScrollView
@@ -134,8 +138,9 @@ struct ContentView: View {
                     .padding(.bottom, 30)
                     
     //MARK: -NavigationLink
+    
                     if personalData.count > 0 {
-                        NavigationLink(destination: DetailData(personalData: personalData[naviNum]), isActive: $DetailFlg) {
+                        NavigationLink(destination: DetailData(personalData: personalData[naviNum], DetailFlg: $DetailFlg), isActive: $DetailFlg) {
                             EmptyView()
                         }
                         NavigationLink(destination: QuickMemo(personalData: personalData[naviNum]), isActive: $QuickFlg) {
@@ -144,7 +149,7 @@ struct ContentView: View {
                     } else {
                         Text("no Data")
                     }
-                    
+    
                 }
                 .padding(.horizontal, 4.0) //:VStack
             } //:ZStack

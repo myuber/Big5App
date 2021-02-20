@@ -15,12 +15,13 @@ struct EditData: View {
     
     let persistentContainer = PersistentController.shared
 
+    // Viewを閉じるための変数
+    @Environment(\.presentationMode) var presentationMode
     
     // big5SlideViewを表示/非表示を切り替える変数
     @Binding var showbig5SlideView: Bool
+    @Binding var DetailFlg: Bool
     
-    // モーダルViewを閉じるための変数
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     // Big5Editを表示するSheet判定用の変数
     @State var showBig5EditSheet = false
@@ -241,8 +242,9 @@ struct EditData: View {
                         Text("削除").font(.headline)
                     }.foregroundColor(.white)
                 }.onTapGesture {
+                   // self.presentationMode.wrappedValue.dismiss()
+                    self.DetailFlg = false
                     self.deleteData()
-                    self.presentationMode.wrappedValue.dismiss()
                 } //:onTapGesture
                 
                 Spacer()
