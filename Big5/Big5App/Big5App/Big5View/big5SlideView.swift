@@ -70,7 +70,7 @@ struct big5SlideView: View {
                         .clipShape(Circle())
                 }
                } //: ZStack
-                   .padding(.top, -60)
+                   .padding(.top, -100)
                    .scaleEffect(showAnimation ? 1 : 0)
                
                    VStack {

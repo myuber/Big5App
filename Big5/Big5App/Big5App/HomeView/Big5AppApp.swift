@@ -17,7 +17,7 @@ struct Big5AppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            HomeView().edgesIgnoringSafeArea(.all)
         }
     }
 }

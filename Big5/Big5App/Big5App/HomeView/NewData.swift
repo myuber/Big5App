@@ -104,62 +104,96 @@ struct NewData: View {
                     HStack {
                         Text("名前")
                             .frame(width: 120, alignment: .leading)
-                        TextField("お名前", text: $name)
-                    }
+                        ZStack {
+                            if name.isEmpty { Text("お名前").foregroundColor(Color.gray) }
+                            TextField("", text: $name)
+                        }
+                    }.foregroundColor(Color.black)
                     HStack {
                         Text("フリガナ")
                             .frame(width: 120, alignment: .leading)
-                        TextField("フリガナ", text: $kana)
-                    }
+                        ZStack {
+                            if kana.isEmpty { Text("フリガナ").foregroundColor(Color.gray) }
+                            TextField("", text: $kana)
+                        }
+                    }.foregroundColor(Color.black)
                     HStack {
                         Text("ニックネーム")
                             .frame(width: 120, alignment: .leading)
-                        TextField("ニックネーム", text: $nickname)
-                    }
+                        ZStack {
+                            if nickname.isEmpty { Text("ニックネーム").foregroundColor(Color.gray) }
+                            TextField("", text: $nickname)
+                        }
+                    }.foregroundColor(Color.black)
                     DatePicker(selection: $birthday,
                                displayedComponents: .date,
                                label: {Text("誕生日")}
-                    ) // 多分Xcodeをアップデートすれば使えるカレンダー型のピッカー.datePickerStyle(GraphicalDatePickerStyle())
+                    ).foregroundColor(Color.black)
+                    // 多分Xcodeをアップデートすれば使えるカレンダー型のピッカー.datePickerStyle(GraphicalDatePickerStyle())
                     
                     HStack {
                         Text("出身地")
                             .frame(width: 120, alignment: .leading)
-                        TextField("〇〇県〇〇市", text: $from)
-                    }
+                        ZStack {
+                            if from.isEmpty { Text("〇〇県〇〇市").foregroundColor(Color.gray) }
+                            TextField("", text: $from)
+                        }
+                    }.foregroundColor(Color.black)
                     HStack {
                         Text("職業")
                             .frame(width: 120, alignment: .leading)
-                        TextField("会社員", text: $job)
-                    }
+                        ZStack {
+                            if job.isEmpty { Text("会社員").foregroundColor(Color.gray) }
+                            TextField("", text: $job)
+                        }
+                    }.foregroundColor(Color.black)
                     HStack {
                         Text("好きなもの")
                             .frame(width: 120, alignment: .leading)
-                        TextField("好きなもの", text: $like)
-                    }
+                        ZStack {
+                            if like.isEmpty { Text("好きなもの").foregroundColor(Color.gray) }
+                            TextField("", text: $like)
+                        }
+                    }.foregroundColor(Color.black)
                     HStack {
                         Text("嫌いなもの")
                             .frame(width: 120, alignment: .leading)
-                        TextField("嫌いなもの", text: $dislike)
-                    }
-                }
+                        ZStack {
+                            if dislike.isEmpty { Text("嫌いなもの").foregroundColor(Color.gray) }
+                            TextField("", text: $dislike)
+                        }
+                    }.foregroundColor(Color.black)
+                } //:Section
+                .listRowBackground(Color.white)
                 //----------- 連絡先 -----------
                 Section(header: Text("連絡先")) {
                     HStack {
                         Text("電話番号")
                             .frame(width: 120, alignment: .leading)
-                        TextField("000-0000-0000", text: $tel)
-                            .keyboardType(.phonePad)
-                    }
+                        ZStack {
+                            if tel.isEmpty { Text("000-0000-0000").foregroundColor(Color.gray) }
+                            TextField("", text: $tel)
+                                .keyboardType(.phonePad)
+                        }
+                    }.foregroundColor(Color.black)
                     HStack {
                         Text("メール")
                             .frame(width: 120, alignment: .leading)
-                        TextField("xxxxxxxx@xxx.jp", text: $mail)
-                    }
+                        ZStack {
+                            if mail.isEmpty { Text("xxxxxxxx@xxx.jp").foregroundColor(Color.gray) }
+                            TextField("", text: $mail)
+                        }
+                    }.foregroundColor(Color.black)
                 }
+                .listRowBackground(Color.white)
                 //----------- メモ -----------
                 Section(header: Text("追加情報")) {
-                    TextField("特徴や最近話したことなどをメモしよう", text: $explanation)
+                    ZStack {
+                        if explanation.isEmpty { Text("特徴や最近話したことなどをメモしよう").foregroundColor(Color.gray) }
+                        TextField("", text: $explanation).foregroundColor(Color.black)
+                    }
                 }
+                .listRowBackground(Color.white)
                 //----------- 登録ボタン -----------
                 HStack(alignment: .center) {
                     Spacer()
@@ -175,7 +209,8 @@ struct NewData: View {
                         }.foregroundColor(.red)
                     }
                     Spacer()
-                }
+                } //:HStack
+                .listRowBackground(Color.white)
             } //:Form
             .background(Color.tOrange)
             .navigationBarTitle("情報の追加")

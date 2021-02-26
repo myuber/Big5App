@@ -27,7 +27,7 @@ struct IconView: View {
                     .clipShape(Circle())
                     .frame(width: 100, height: 100)
             } else {
-                Image(systemName: "snow")
+                Image(systemName: "person")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .clipShape(Circle())
